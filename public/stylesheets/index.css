@@ -1,0 +1,359 @@
+@import url("../fonts/fonts.css");
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+background-color: #243B55;
+    overflow: hidden;
+}
+
+.pageWrap , .pageContent{
+    height: 100vh ;
+    width: 100vw;
+    background-color: #001825;
+}
+
+.header{
+    height: 10vh;
+    width: 100vw;
+    position: relative;
+    background-color: #0B0B61;
+}
+
+.logo{
+    height: 9vh;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float:left;
+    color: White;
+    font-family: 'Berkshire Swash', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    pointer-events: none;
+}
+
+
+.signIn{
+    height: 20px;
+    width: auto;
+    position: relative;
+    background-color: #0B0B61 ;
+    color: white;
+    font-size: 15px;
+    font-family: 'Fira Sans', sans-serif,serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 10px;
+    float: right;
+    /*transform: skewX(-20deg);*/
+    transition: all 0.3s ease-in-out;
+
+    -moz-box-shadow: 0px 1px 0px 0px #e0e0e0;
+	-webkit-box-shadow: 0px 1px 0px 0px #e0e0e0;
+	box-shadow: 0px 1px 0px 0px #e0e0e0;
+	background: gradient(linear, left top, left bottom, color-stop(0.05, rgb(212, 212, 212)), color-stop(1, rgb(150, 150, 150)));
+	background:-moz-linear-gradient(top, rgb(211, 210, 210) 5%, rgb(150, 150, 150) 100%);
+	background:-webkit-linear-gradient(top, rgb(212, 212, 212) 5%, rgb(150, 150, 150) 100%);
+	background:-o-linear-gradient(top, rgb(212, 212, 212) 5%, rgb(150, 150, 150) 100%);
+	background:-ms-linear-gradient(top, rgb(212, 212, 212) 5%, rgb(150, 150, 150) 100%);
+	background:linear-gradient(to bottom, rgb(212, 212, 212) 5%, rgb(150, 150, 150) 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='rgb(212, 212, 212)', endColorstr='rgb(150, 150, 150)',GradientType=0);
+	background-color:rgb(212, 212, 212);
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #616161;
+	display:inline-block;
+	cursor:pointer;
+	color:#0B0B61;
+ /*	font-family:Arial;*/
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #888888;
+
+    
+}
+
+/* .skew{ */
+ /* transform: skewX(20deg); */
+/* } */
+
+.signIn:hover {
+    cursor: pointer;
+    background:rgb(212, 212, 212);
+}
+
+.signIn{
+    margin-top: 11px;
+    margin-right: 35px;
+}
+
+.content{
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+    background-color: #001421;
+    background-repeat: round;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.content-wall{
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+    background:rgb(150, 150, 150);
+
+	background-size : cover;
+    z-index: 0;
+    transition: all 1.5s ease-in-out;
+
+}
+
+.content-left{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left:0;
+  top:0;
+  z-index:-1;
+  display: flex;
+  flex-direction:column;
+
+}
+
+.strip{
+  height: 350px;
+  width: 100%;
+  position: relative;
+  top: 18vh;
+  background:rgb(212, 212, 212);
+}
+
+.quote{
+  font-size: 45px;
+  color: #0B0B61;
+  width: 84%;
+  position: relative;
+  height: 170px;
+  top: 20px;
+  left: 16%;
+  word-wrap: break-word;
+  font-family: 'Patua One', serif;
+
+}
+
+.welcome-text{
+  font-size: 20px;
+  color: rgb(98, 98, 98);
+  position: relative;
+  height: 30px;
+  width: 84%;
+  top: 30px;
+  left: 16%;
+  font-family: 'quicksand', serif;
+
+}
+
+.signUp{
+  
+  font-size: 100%;
+  color: black;
+  position: relative;
+  width: 100px;
+  height: 19px;
+  top:80px;
+  left: 16%;
+  text-align: center;
+  padding: 7px 3px;
+  font-family: 'Fira Sans', serif;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.8);
+  border-radius:6px;
+
+  
+}
+
+.signUp:hover{
+  cursor: pointer;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+.content-right{
+  width: 40vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right:0;
+  background-image: url("../images/side.png");
+  background-repeat: no-repeat;
+
+}
+
+.pageContent{
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    transition: transform 500ms ease-in-out;
+}
+
+
+.loginSection{
+    width: 410px;
+    height: 100vh;
+    background-color: #192231;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(410px);
+    transition: transform 500ms ease-in-out;
+}
+
+.toggleWrapper{
+  width: 410px;
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+}
+
+.closeButton{
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  color: white;
+  margin-top: 15px;
+  margin-right: 10px;
+  float: right;
+  transform: scale(1);
+  transition: all 0.8s ease-in-out;
+}
+
+.closeButton:hover{
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.loginWrapper{
+    height: auto;
+    width: 390px;
+    background: rgba(70, 118, 120 , 0.5);
+    box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.headerWrapper{
+    height: 150px;
+    width: 380px;
+
+}
+
+.imageTag{
+    height: 100px;
+    width: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.title{
+    width: 380px;
+    height: 40px;
+    font-family:  'Fira Sans', sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+.loginButton:hover{
+    box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.4);
+    transition: all 0.15s ease-in-out;
+}
+
+
+#loginSection.showLog{
+  transform: translateX(0vw);
+  transition: transform 500ms ease-in-out;
+}
+
+
+#closeButton.disappear{
+  transform: scale(0);
+}
+
+
+.myButton {
+	-moz-box-shadow: 0px 1px 0px 0px #e0e0e0;
+	-webkit-box-shadow: 0px 1px 0px 0px #e0e0e0;
+	box-shadow: 0px 1px 0px 0px #e0e0e0;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, rgb(212, 212, 212)), color-stop(1, #ffab23));
+	background:-moz-linear-gradient(top, rgb(212, 212, 212) 5%, #ffab23 100%);
+	background:-webkit-linear-gradient(top, rgb(212, 212, 212) 5%, #ffab23 100%);
+	background:-o-linear-gradient(top, rgb(212, 212, 212) 5%, #ffab23 100%);
+	background:-ms-linear-gradient(top, rgb(212, 212, 212) 5%, #ffab23 100%);
+	background:linear-gradient(to bottom, rgb(212, 212, 212) 5%, #ffab23 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='rgb(212, 212, 212)', endColorstr='#ffab23',GradientType=0);
+	background-color:rgb(212, 212, 212);
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #e0e0e0;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, rgb(212, 212, 212)));
+	background:-moz-linear-gradient(top, #ffab23 5%, rgb(212, 212, 212) 100%);
+	background:-webkit-linear-gradient(top, #ffab23 5%, rgb(212, 212, 212) 100%);
+	background:-o-linear-gradient(top, #ffab23 5%, rgb(212, 212, 212) 100%);
+	background:-ms-linear-gradient(top, #ffab23 5%, rgb(212, 212, 212) 100%);
+	background:linear-gradient(to bottom, #ffab23 5%, rgb(212, 212, 212) 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='rgb(212, 212, 212)',GradientType=0);
+	background-color:#ffab23;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}

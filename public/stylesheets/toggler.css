@@ -1,0 +1,40 @@
+
+.menu-toggler{
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    height: 25px;
+    width: 30px;
+    z-index: 1;
+    /*background: red;*/
+    display: flex;
+    align-items: center;
+}
+
+span , span::before , span::after{
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: white;
+    position: absolute;
+    transition: all 0.4s ease-in-out;
+}
+
+span::before{
+    top: 10px;
+}
+
+span::after{
+    top: -10px;
+}
+
+#menu-toggle{
+    position: absolute;
+    display: none;
+}
+
+.menu-toggler:hover{
+    opacity: 0.6;
+    transition: all .3s ease-in-out;
+}

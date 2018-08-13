@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>{{title}}</title>
+</head>
+<body>
+<h1>{{title}}</h1>
+
+    {{#each items }}
+        <pre>
+            Title: {{ this.VehicleBrand }}
+            Model: {{ this.VehicleModel }} {{ this.year }}
+            Mileage: {{ this.mileage }}
+            Location: {{ this.district }}, {{ this.town}}
+            Owner: {{ this.Owner }}
+            Contact No: {{ this.Contactno }}
+            Condition: {{ this.condition }}
+            Engine Capacity: {{ this.engineCapacity }}
+            Description: {{ this.description }}
+            Transmissioin Type: {{ this.transmissioinType }}
+            Fuel Type: {{ this.fuelType }}
+            Added Date: {{ this.added_date }}            
+            <img src="/uploads/{{this.image1Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 25%;min-height: 25%;align:left;">   <img src="/uploads/{{this.image2Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 25%;min-height: 25%;align:left;">   <img src="/uploads/{{this.image3Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 25%;min-height: 25%;align:left;"><br>
+
+            <div class="row">
+  <div class="col-lg-3">
+            <a class="btn btn-primary" href="/admin/confirm_vehicle_ad/{{this._id}}" role="button">Confirm This Ad To Publish</a><br>
+            <a class="btn btn-danger" href="#" role="button">Delete This Ad</a>
+            </div>
+            <div class="col-lg-6">
+                <form name="form" method="POST" action="/admin/sendSMS">
+    
+            <div class="form-group shadow-textarea">
+    <textarea class="form-control z-depth-1" id="sms" name="sms" rows="2" placeholder="Write the ..."></textarea>
+    <input type="hidden" id="contactNo" name="contactNo" value={{ this.Contactno }}>
+    <button type="submit" class="btn btn-primary">Send</button>
+</div>
+                </form>
+</div>
+</div>
+            {{!-- <form class="form" method="POST" action="#"><div class="form-group">
+                <label for="inputPassword2" class="sr-only">Message</label> 
+                <textarea class="form-control" rows="2" id="comment"></textarea> 
+                <button type="submit" class="btn btn-primary">Send the faults in this ad</button>
+                </div>
+            </form>   --}}
+        </pre>
+        {{/each}}
+    </div>
