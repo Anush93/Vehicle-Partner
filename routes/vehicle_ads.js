@@ -22,13 +22,40 @@ router.get('/', function(req, res, next) {
     res.render('vehicle-ads-all', { title: 'All vehicle adds',items: doc });
   });
 });
-
-router.get('/:id', function(req, res, next) {
+//clicked add details
+router.get('/clicked/:id', function(req, res, next) {
   var id=req.params.id;
   AdData.find({ _id: id}).
   then(function(doc){
     res.render('vehicle-ad-view', { title: 'Clicked Ad Details',items: doc });
   });
+});
+
+//searching ads
+
+router.get('/search', function(req, res) {
+
+  var District=req.query.district;
+  var Town=req.query.town;
+  var Brand=req.query.VehicleBrand;
+  var Model=req.query.vehicleModel;
+
+  AdData.find({$or:[{district:District},
+    {town:Town},
+    {VehicleBrand:Brand},
+    {VehicleModel:Model}]}, function (err, docs) {
+    console.log(docs);
+    res.render('vehicle-ads-all', { title: 'Searched Ad Details',items: docs });
+  });
+  //console.log(req.query);
+
+
+  // AdData.find({district:District/*,town:Town,VehicleBrand:Brand,VehicleModel:Model*/}).
+  // then(function(docs){
+    
+  //   res.render('vehicle-ads-all', { title: 'Searched Ad Details',items: docs });
+  //   console.log(docs);
+  // });
 });
 
 var upload = multer({storage: multer.diskStorage({
