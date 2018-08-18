@@ -31,12 +31,19 @@ router.get('/confirm_vehicle_ad/:id', function(req, res, next) {
     });
   });
 
-//to view all pending ads
+//to view all pending vehicle ads
 router.get('/pending_vehicle_ads', function(req, res, next) {
   AdData.find({isLive:0}).
   then(function(doc){
     res.render('pending_vehicle_ads', { title: 'Pending Vehicle Ads', items: doc });
   });
+});
+
+//delete vehicle ads from admin view
+router.get('/delete_vehicle_ad/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.render('admin_home', { title: 'Welcome admin' }); 
 });
 
 
