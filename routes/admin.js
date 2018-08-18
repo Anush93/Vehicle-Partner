@@ -16,6 +16,10 @@ router.get('/', function(req, res, next) {
   res.render('admin_home', { title: 'Welcome admin' });
 });
 
+router.get('/allAds', function(req, res, next) {
+  res.render('admin_allAds', { title: 'allAds' });
+});
+
 //admin confirmation of vehicle ad
 
 router.get('/confirm_vehicle_ad/:id', function(req, res, next) {
