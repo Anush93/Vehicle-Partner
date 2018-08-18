@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 /* GET home page. */
+//get all vehiicle ads 
 router.get('/', function(req, res, next) {
   AdData.find({isLive:1}).
   
