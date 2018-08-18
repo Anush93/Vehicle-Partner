@@ -15,8 +15,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 ////////////////////////////////
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('logged page should be displayed');
+router.get('/user_profile', function(req, res, next) {
+  res.send('logged page of user should be displayed');
+});
+
+router.get('/garage_profile', function(req, res, next) {
+  res.send('logged page of garage should be displayed');
 });
 
 router.get('/vehicle_ad_form', function(req, res, next) {
@@ -30,4 +34,13 @@ router.get('/vehicle_ad_form', function(req, res, next) {
   router.get('/register', function(req, res, next) {
     res.render('register', { title: 'Register' });
   });
+
+  router.get('/garage_ad_form', function(req, res, next) {
+    res.render('garage-ad-form', { title: 'Fill Your Garage Advertisment Details' });
+  });
+
+  router.get('/spare_part_ad_form', function(req, res, next) {
+    res.render('spare-part-ad-form', { title: 'Fill Your Spare Part Advertisment Details' });
+  });
+
 module.exports = router;
