@@ -7,10 +7,11 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/admin_allAds.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/adminHome.css">
 <!------ Include the above in your HEAD tag ---------->
-
+<body style="background-color:#F2F3F5">
 <nav class="navbar navbar-default navbar-static-top" style="background-color:#0B0B61">
-    <div class="container-fluid">
+    <div class="container-fluid" >
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
@@ -36,7 +37,7 @@
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
-	</nav>  	<div class="container-fluid main-container">
+	</nav>  	<div class="container-fluid main-container" style="background-color:#F2F3F5">
 
 
 
@@ -101,7 +102,7 @@
 						</div>
 					</li>
 
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+					<li><a href="/admin/"><span class="glyphicon glyphicon-user"></span> Users</a></li>
 
 				</ul>
 			</div><!-- /.navbar-collapse -->
@@ -112,9 +113,64 @@
   		<div class="col-md-10 content">
   			  <div class="panel panel-default">
 	<div class="panel-heading">
-		Dashboard
+		<h3>User Details</h3> 
 	</div>
-	<div class="panel-body">
+	<div class="panel-body" style="background-color:#EAEBEF">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+  <!--for demo wrap-->
+ 
+  <div class="tbl-header"> 
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th></th>
+        
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+		  {{#each items }}
+        <tr>
+          <td>{{ this._id}}</td>
+          <td>{{ this.username}} </td>
+          <td>{{ this.email}}</td>
+          <td><a class="btn btn-danger" href="/admin/delete_vehicle_dad/{{this.ff_id}}" role="button">Delete</a></td>
+        
+        </tr>
+		{{/each}} 
+        
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+
+
+
+
+
 		
 
 
@@ -132,6 +188,7 @@
   			</p>
   		</footer>
   	</div>
+	  </body>
 
 <script>
 
