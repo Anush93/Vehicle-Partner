@@ -51,10 +51,10 @@ router.get('/delete_vehicle_ad/:id', function(req, res, next) {
 });
 
 
-router.post('/sendSMS', function(req, res, next) {
+router.post('/sendSMS', function(req, res, next){
   var sms =req.body.sms;
   var number ="+94"+req.body.contactNo;
-  console.log(number);
+  console.log("meka");
 
 
 

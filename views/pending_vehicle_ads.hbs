@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/admin_allAds.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pendingAds.css">
 <!------ Include the above in your HEAD tag ---------->
 
 <nav class="navbar navbar-default navbar-static-top" style="background-color:#0B0B61">
@@ -114,7 +115,7 @@
 	<div class="panel-heading">
 		Pending Vehicle Ads
 	</div>
-	<div class="panel-body">
+<!--	<div class="panel-body">
 		
 
 
@@ -138,9 +139,9 @@
             Fuel Type: {{ this.fuelType }}
             Added Date: {{ this.added_date }}            
             <img src="/uploads/{{this.image1Path}}" class="img-rounded" alt="not loaded" 
-            style="width: 25%;min-height: 25%;align:left;">   <img src="/uploads/{{this.image2Path}}" class="img-rounded" alt="not loaded" 
-            style="width: 25%;min-height: 25%;align:left;">   <img src="/uploads/{{this.image3Path}}" class="img-rounded" alt="not loaded" 
-            style="width: 25%;min-height: 25%;align:left;"><br>
+            style="width: 15%; height: 15%; object-fit: cover; min-height: 15%;align:left;">   <img src="/uploads/{{this.image2Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 15%; height: 15%; object-fit:cover; min-height: 15%;align:left;">   <img src="/uploads/{{this.image3Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 15%; height: 15%; object-fit: cover; min-height: 15%;align:left;"><br>
 
             <div class="row">
   <div class="col-lg-3">
@@ -165,8 +166,85 @@
                 </div>
             </form>   --}}
         </pre>
-        {{/each}}
+        {{/each}} 
+    </div>   -->
+
+
+
+
+
+
+<div class="panel-body">
+ <div class="col-md-9">
+ 
+
+{{#each items }}
+  <div class="container" >
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-9" >
+            <div class="well well-sm"  >
+                <div class="row" >
+                    <div class="col-sm-6 col-md-4">
+                        <img src="/uploads/{{this.image1Path}}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4> {{ this.VehicleBrand }} {{ this.VehicleModel }} {{ this.year }}</h4>
+                        <small><cite title="San Francisco, USA">Location: {{ this.district }}, {{ this.town}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        {{!-- <small>{{ this.added_date }}</small> --}}
+                        <small>{{ this.mileage }} km</small>
+						<br>
+                        <small>Rs {{ this.price }}</small>
+						<br>
+
+                          
+           
+    
+           <small> Owner: {{ this.Owner }}</small>
+		   <br>
+           <small>Contact No: {{ this.Contactno }}</small> 
+		   <br>
+            <small>Condition: {{ this.condition }}</small>
+			<br>
+           <small>Engine Capacity: {{ this.engineCapacity }}</small> 
+		   <br>
+           <small>Description: {{ this.description }}</small> 
+		   <br>
+           <small>Transmissioin Type: {{ this.transmissioinType }}</small> 
+		   <br>
+            <small>Fuel Type: {{ this.fuelType }}</small>
+			<br>
+			<br>
+			 <a class="btn btn-success" href="/admin/confirm_vehicle_ad/{{this._id}}" role="button">Confirm</a>
+            <a class="btn btn-danger" href="/admin/delete_vehicle_ad/{{this._id}}" role="button">Delete</a>
+            <br>
+			<br>
+             
+                <form name="form" method="POST" action="/admin/sendSMS">
+    
+        
+    <textarea class="form-control z-depth-1" id="sms" name="sms" rows="2" placeholder="Write the improvements ..."></textarea>
+    <input type="hidden" id="contactNo" name="contactNo" value={{ this.Contactno }}>
+	<br>	
+    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+                        {{!-- <button type="button" class="btn btn-secondary">More..</button> --}}
+                        </div>
+                </div>
+            </div>
+        </div>
     </div>
+  </div>
+  {{/each}}   
+        </div>
+</div>
+
+
+
+
+
+
+
 
 
 
@@ -200,5 +278,48 @@
   		$('.search-input').focus();
   	});
   });
+
+
+
+
+
+
+$(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+        alert("This is a demo.\n :-)");
+    });
+});
+
+
+
 
 </script>
