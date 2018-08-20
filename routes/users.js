@@ -47,4 +47,8 @@ router.get('/vehicle_ad_form', function(req, res, next) {
     res.render('helpAndTips', { title: 'Helps & Tips' });
   });
 
+  router.get('/aboutUs', function(req, res, next) {
+    res.render('aboutUs', { title: 'About Us' });
+  });
+
 module.exports = router;
