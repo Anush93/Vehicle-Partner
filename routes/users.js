@@ -43,4 +43,8 @@ router.get('/vehicle_ad_form', function(req, res, next) {
     res.render('spare-part-ad-form', { title: 'Fill Your Spare Part Advertisment Details' });
   });
 
+  router.get('/helpAndTips', function(req, res, next) {
+    res.render('helpAndTips', { title: 'Helps & Tips' });
+  });
+
 module.exports = router;
