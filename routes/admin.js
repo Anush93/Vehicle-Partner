@@ -101,7 +101,7 @@ router.post('/sendSMS', function(req, res, next){
 
 
 
-    res.redirect('/');
+    res.redirect('/admin/pending_vehicle_ads');
   
 });
 
