@@ -88,24 +88,8 @@ router.post('/sendSMS', function(req, res, next){
       console.log('Email sent: ' + info.response);
     }
   });
-
-<<<<<<< HEAD
     res.redirect('/');
-=======
-
-
-
-
-  
-
-
-
-
-
-
-
-    res.redirect('/admin/pending_vehicle_ads');
->>>>>>> master
+    ///res.redirect('/admin/pending_vehicle_ads');
   
 });
 
