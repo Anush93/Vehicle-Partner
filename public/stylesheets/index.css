@@ -34,7 +34,7 @@ background-color: #243B55;
     float:left;
     color: White;
     font-family: 'Berkshire Swash', sans-serif;
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 400;
     pointer-events: none;
 }
@@ -114,7 +114,7 @@ background-color: #243B55;
 .content-wall{
     position: relative;
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     background:rgb(150, 150, 150);
 
 	background-size : cover;
