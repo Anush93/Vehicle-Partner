@@ -23,8 +23,13 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.get('/allAds', function(req, res, next) {
-  res.render('admin_allAds', { title: 'allAds' });
+
+router.get('/all_Ads', function(req, res, next) {
+  AdData.find({isLive:1}).
+  
+  then(function(doc){
+    res.render('admin_allAds', { title: 'All vehicle adds',items: doc });
+  });
 });
 
 //admin confirmation of vehicle ad
@@ -55,6 +60,13 @@ router.get('/delete_vehicle_ad/:id', function(req, res, next) {
   var id = req.params.id;
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.render('admin_home', { title: 'Welcome admin' }); 
+});
+
+//delete all add
+router.get('/deleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.render('admin_allads', { title: 'All Vehicle Ads' }); 
 });
 
 

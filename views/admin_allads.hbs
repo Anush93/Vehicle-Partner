@@ -1,39 +1,35 @@
+<title>{{title}}</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/admin_allAds.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/add.css">
 <!------ Include the above in your HEAD tag ---------->
 
-<nav class="navbar navbar-default navbar-static-top" style="background-color:#0B0B61">
-    <div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
-			MENU
-			</button>
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">
-				<a class="navbar-brand" href="#"   style="font-family: 'Berkshire Swash', sans-serif">VehiclePartner.lk</a>
-			</a>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
-			
+<div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
+  	<div class="container">
+      <div class="navbar-header"><a class="navbar-brand" href="#">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+        </a>
+      </div>
+        <div class="navbar-collapse">
+           
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="http://www.pingpong-labs.com" target="_blank">LogOut</a></li>
-				
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>  	<div class="container-fluid main-container">
+        <li><a href="#"><span class="glyphicon glyphicon-user" style="color: #FFFFFF"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in" style="color: #FFFFFF"></span> Login</a></li>
+      </ul>
+        
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div> 	
+	
+	
+	<div class="container-fluid main-container">
 
 
 
@@ -108,12 +104,59 @@
 </div>  		</div>
   		<div class="col-md-10 content">
   			  <div class="panel panel-default">
-	<div class="panel-heading">
-		Dashboard
-	</div>
-	<div class="panel-body">
-		pending ads
-</div>
+	
+	
+		
+
+
+        <div class="col-md-6">
+ 
+
+{{#each items }}
+<div class="container" >
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6" >
+            <div class="well well-sm" style="background-color:#ffffff;" >
+                <div class="row" >
+                    <div class="col-sm-6 col-md-4">
+                        <img src="/uploads/{{this.image1Path}}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4> {{ this.VehicleBrand }} {{ this.VehicleModel }} {{ this.year }}</h4>
+                        <small><cite title="San Francisco, USA">Location: {{ this.district }}, {{ this.town}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        {{!-- <small>{{ this.added_date }}</small> --}}
+                        <small>{{ this.mileage }} km</small>
+                        <small>Rs {{ this.price }}</small>
+
+                        <small> Owner: {{ this.Owner }}</small>
+		   
+           <small>Contact No: {{ this.Contactno }}</small> 
+		   
+            <small>Condition: {{ this.condition }}</small>
+			
+           <small>Engine Capacity: {{ this.engineCapacity }}</small> 
+		   
+           <small>Description: {{ this.description }}</small> 
+		   
+           <small>Transmissioin Type: {{ this.transmissioinType }}</small> 
+		   
+            <small>Fuel Type: {{ this.fuelType }}</small>
+
+                        {{!-- <button type="button" class="btn btn-secondary">More..</button> --}}
+                        <a  target="_blank" class="btn btn-danger" href="/admin/deleteVehicleAd/{{this._id}}"  role="button">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  {{/each}}   
+        </div>
+
+
+
   		</div>
   		<footer class="pull-left footer">
   			<p class="col-md-12">
