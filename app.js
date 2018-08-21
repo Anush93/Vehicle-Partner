@@ -11,6 +11,7 @@ var expressValdator = require('express-validator');
 var expressSession = require('express-session');
 var multer = require('multer');
 var expressValidator = require('express-validator');
+var flash = require('connect-flash');
 
 
 
@@ -19,6 +20,7 @@ var vehicleAdRouter = require('./routes/vehicle_ads');
 var config = require('./config/database');
 var adminRouter = require('./routes/admin');//
 var users_login = require('./routes/users_login');
+var garageRouter = require('./routes/garage');
 
 var app = express();
 
@@ -42,6 +44,28 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
 
+// Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
+
+// Connect Flash
+app.use(flash());
+
 /////////routings
 
 app.use('/', indexRouter);//any request is sent to indexrouter method
@@ -49,6 +73,7 @@ app.use('/users',userRouter);//req==/users nam userRouter ekata yanna
 app.use('/vehicle_ads',vehicleAdRouter);
 app.use('/admin',adminRouter);
 app.use('/users_login',users_login);
+app.use('/garage',garageRouter);
 
 
 // catch 404 and forward to error handler
@@ -60,11 +85,12 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  //res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.garage = req.garage || null;
+  next();
 });
 
 module.exports = app;

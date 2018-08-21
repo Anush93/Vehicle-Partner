@@ -1,0 +1,495 @@
+
+{{!-- <img src="/uploads/{{imgPath}}" class="img-rounded" alt="not loaded"> --}}
+<link rel="stylesheet" href="/stylesheets/style.css">
+ <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+ 
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+  <script type="text/javascript">
+	$("#password").password('toggle');</script>
+
+{{!-- map and stuff --}}
+<style>
+#myMap {
+   height: 350px;
+   width: 680px;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?AIzaSyAwLerGxOlAUFyTecHDck4g2qwtG2HI7i4&sensor=false">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
+ <title>{{title}}</title>
+</head>
+<body>
+<h1>{{title}}</h1>
+
+{{#if user}}
+        <div class="alert alert-danger">Username has taken already try new</div> 
+{{/if}}
+{{#if mail}}
+        <div class="alert alert-danger">Email has taken already try new</div> 
+{{/if}} 
+{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+<form name="form" method="POST" action="/garage/register" enctype="multipart/form-data" onSubmit="return validate();">
+  <div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Garage Name</label>   
+    <input  class="form-control" type="text" id="garagename"  name="garagename" placeholder="Enter Owner Name" required>    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-toggle="password" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1">District</label>
+    <select class="form-control" id="slct1" name="district" onchange="populate(this.id,'slct2')" required>
+        <option value="">Your district</option>{{!--user district should retrieve --}}
+        <option value="Ampara">Ampara</option>
+        <option value="Anuradhapura">Anuradhapura</option>
+        <option value="Badulla">Badulla</option>
+        <option value="Batticaloa">Batticaloa</option>
+        <option value="Colombo">Colombo</option>
+        <option value="Galle">Galle</option>
+        <option value="Gampaha">Gampaha</option>
+        <option value="Hambantota">Hambantota</option>
+        <option value="Jaffna">Jaffna</option>
+        <option value="Kalutara">Kalutara</option>
+        <option value="Kandy">Kandy</option>
+        <option value="Kegalla">Kegalla</option>
+        <option value="Kilinochchi">Kilinochchi</option>
+        <option value="Kurunegala">Kurunegala</option>
+        <option value="Mannar">Mannar</option>
+        <option value="Matale">Matale</option>
+        <option value="Matara">Matara</option>
+        <option value="Moneragala">Moneragala</option>
+        <option value="Mullaitivu">Mullaitivu</option>
+        <option value="Nuwara Eliya">Nuwara Eliya</option>
+        <option value="Polonnaruwa">Polonnaruwa</option>
+        <option value="Puttalam">Puttalam</option>
+        <option value="Ratnapura">Ratnapura</option>
+        <option value="Trincomalee">Trincomalee</option>
+        <option value="Vavuniya">Vavuniya</option>
+  </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1">Town</label>
+    <select class="form-control" id="slct2" name="town" required>
+          <option value="">Your town</option>{{!--user town should retrieve --}}
+    </select>
+  </div>
+
+  {{!-- map and location stuff --}}
+<div id="myMap"></div>
+
+  <div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Longitude</label>
+        <input class="form-control" type="text" id="longitude" name="longitude" placeholder="Longitude" required>
+  </div>
+  <div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Latitude</label>
+        <input class="form-control" type="text" id="latitude" name="latitude" placeholder="Latitude" required>
+  </div>
+
+<div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Service Types</label><br>
+  <label class="checkbox-inline"><input type="checkbox" name="acServices" id="acServices" value="AC Services">AC Services</label>
+  <label class="checkbox-inline"><input type="checkbox" name="eServices" id="eServices" value="Electrical Services">Electrical Services</label>
+  <label class="checkbox-inline"><input type="checkbox" name="lmServices" id="lmServices" value="Laith Machin Services">Laith Machin Services</label>
+  <label class="checkbox-inline"><input type="checkbox" name="mechanicServices" id="mechanicServices" value="Mechanical Services">Mechanical Services</label>
+  <label class="checkbox-inline"><input type="checkbox" name="paintServices" id="paintServices" value="Paint Services">Paint Services</label>
+  <label class="checkbox-inline"><input type="checkbox" name="tServices" id="tServices" value="Tinker Services">Tinker Services</label>
+</div>
+
+<div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="description" name="description" rows="6" placeholder="Give an attractive information about yor garage" required></textarea>
+</div>
+
+<div class="form-group">
+        <label>Upload Image</label>
+        
+        
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Picature 1<input id="pic1" name="upl" type="file" style="display: none;" >
+                    </span>
+                </label>
+                <input type="text" class="form-control" onfocus="this.blur()" class="readonly" required >
+            </div> <br>
+
+           
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Picature 2<input  id="pic2" name="upl1" type="file" style="display: none;" >
+                    </span>
+                </label>
+                <input type="text" class="form-control" onfocus="this.blur()" class="readonly" required>
+            </div><br>
+
+            
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Picature 3<input  id="pic3" name="upl2" type="file" style="display: none;" >
+                    </span>
+                </label>
+                <input type="text" class="form-control" onfocus="this.blur()" class="readonly" required>
+            </div>
+      </div>
+   <button type="reset" class="btn btn-primary">Reset</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "Ampara"){
+		var optionArray = ["|Select Your Town","Akkarepattu|Akkarepattu","Ampara|Ampara","Kalmunai|Kalmunai",
+    "Sainthamaruthu|Sainthamaruthu","Dehiattakandiya|Dehiattakandiya","Padiyathalawa|Padiyathalawa",
+    "Mahaoya|Mahaoya","Uhana|Uhana","Navithanveli|Navithanveli","Sammanthurai|Sammanthurai"
+    ,"Kalmunai (Tamil)|Kalmunai (Tamil)","Karaitheevu|Karaitheevu","Ninthavur|Ninthavur"
+    ,"Addalaichenai|Addalaichenai","Irakkamam|Irakkamam","Alayadiwembu|Alayadiwembu","Damana|Damana","Thirukkovil|Thirukkovil"
+    ,"Pothuvil|Pothuvil","Lahugala|Lahugala"];
+	} 
+  else if(s1.value == "Anuradhapura"){
+		var optionArray = ["|Select Your Town","Anuradhapura|Anuradhapura","Eppawala|Eppawala","Galenbindunuwewa|Galenbindunuwewa",
+    "Galnewa|Galnewa","Habarana|Habarana","Horowpothana|Horowpothana","Kekirawa|Kekirawa","Medawachchiya|Medawachchiya",
+    "Mihintale|Mihintale","Nochchiyagama|Nochchiyagama","Talawa|Talawa","Ipalogama|Ipalogama","Kahatagasdigiliya|Kahatagasdigiliya"
+    ,"Kebithigollewa|Kebithigollewa","Nachchadoowa|Nachchadoowa","Padaviya|Padaviya","Palagala|Palagala","Palugaswewa|Palugaswewa",
+    "Rajanganaya|Rajanganaya","Rambewa|Rambewa","Thirappane|Thirappane","Tambuttegama|Tambuttegama"];
+	} 
+  else if(s1.value == "Badulla"){
+		var optionArray = ["|Select Your Town","Badulla|Badulla","Bandarawela|Bandarawela","Bandarawela|Bandarawela",
+    "Welimada|Welimada","Mahiyanganaya|Mahiyanganaya","Hali Ela|Hali Ela","Diyatalawa|Diyatalawa","Ella|Ella",
+    "Haputale|Haputale","Passara|Passara","Soranathota|Soranathota","Meegahakivula|Meegahakivula","Kandaketiya|Kandaketiya"
+    ,"Lunugala|Lunugala","Rideemaliyadda|Rideemaliyadda","Haldummulla|Haldummulla"];
+	}
+  else if(s1.value == "Batticaloa"){
+		var optionArray = ["|Select Your Town","Batticaloa|Batticaloa","Eravur Pattu|Eravur Pattu","Eravur Town|Eravur Town","Kattankudy|Kattankudy",
+    "Koralai Pattu|Koralai Pattu","Manmunai|Manmunai","Porativu Pattu|Porativu Pattu"];
+	}
+  else if(s1.value == "Colombo"){
+		var optionArray = ["|Select Your Town","Nugegoda|Nugegoda","Dehiwala|Dehiwala","Piliyandala|Piliyandala",
+    "Maharagama|Maharagama","Kottawa|Kottawa","Angoda|Angoda","Athurugiriya|Athurugiriya","Avissawella|Avissawella",
+    "Battaramulla|Battaramulla","Boralesgamuwa|Boralesgamuwa","Colombo 1|Colombo 1","Colombo 2|Colombo 2",
+    "Colombo 3|Colombo 3","Colombo 4|Colombo 4","Colombo 5|Colombo 5","Colombo 6|Colombo 6","Colombo 7|Colombo 7",
+    "Colombo 8|Colombo 8","Colombo 9|Colombo 9","Colombo 10|Colombo 10","Colombo 11|Colombo 11","Colombo 12|Colombo 12",
+    "Colombo 13|Colombo 13","Colombo 14|Colombo 14","Colombo 15|Colombo 15","Hanwella|Hanwella","Homagama|Homagama",
+    "Kaduwela|Kaduwela","Kesbewa|Kesbewa","Kohuwala|Kohuwala","Kolonnawa|Kolonnawa","Kotte|Kotte",
+    "Malabe|Malabe","Moratuwa|Moratuwa","Mount|Mount","Nawala|Nawala","Padukka|Padukka",
+    "Pannipitiya|Pannipitiya","Rajagiriya|Rajagiriya","Ratmalana|Ratmalana","Talawatugoda|Talawatugoda","Wellampitiya|Wellampitiya"];
+	}
+  else if(s1.value == "Galle"){
+		var optionArray = ["|Select Your Town","Galle|Galle","Ambalangoda|Ambalangoda","Elpitiya|Elpitiya",
+    "Hikkaduwa|Hikkaduwa","Baddegama|Baddegama","Ahangama|Ahangama","Batapola|Batapola","Bentota|Bentota",
+    "Karapitiya|Karapitiya","Akmeemana|Akmeemana","Balapitiya|Balapitiya","Elpitiya|Elpitiya",
+    "Gonapinuwala|Gonapinuwala","Habaraduwa|Habaraduwa","Imaduwa|Imaduwa","Karandeniya|Karandeniya","Nagoda|Nagoda",
+    "Neluwa|Neluwa","Niyagama|Niyagama","Thawalama|Thawalama","Yakkalamulla|Yakkalamulla"];
+	}
+  else if(s1.value == "Gampaha"){
+		var optionArray = ["|Select Your Town","Gampaha|Gampaha","Negombo|Negombo","Kelaniya|Kelaniya",
+    "Kiribathgoda|Kiribathgoda","Kadawatha|Kadawatha","Delgoda|Delgoda","Divulapitiya|Divulapitiya","Ganemulla|Ganemulla",
+    "Ja-Ela|Ja-Ela","Kandana|Kandana","Katunayake|Katunayake","Minuwangoda|Minuwangoda","Mirigama|Mirigama"
+    ,"Nittambuwa|Nittambuwa","Ragama|Ragama","Veyangoda|Veyangoda","Wattala|Wattala","Dompe|Dompe",
+    "Mahara|Mahara"];
+	}
+  else if(s1.value == "Hambantota"){
+		var optionArray = ["|Select Your Town","Hambantota|Hambantota","Tangalla|Tangalla","Beliatta|Beliatta","Ambalantota|Ambalantota",
+    "Tissamaharama|Tissamaharama","Ambalantota|Ambalantota","Angunakolapelessa|Angunakolapelessa","Katuwana|Katuwana",
+    "Lunugamvehera|Lunugamvehera","Okewela|Okewela","Sooriyawewa|Sooriyawewa","Walasmulla|Walasmulla","Weeraketiya|Weeraketiya"];
+	}
+  else if(s1.value == "Jaffna"){
+		var optionArray = ["|Select Your Town","Jaffna|Jaffna","Nallur|Nallur","Chavakachcheri|Chavakachcheri",
+    "Delft|Delft","Karainagar|Karainagar","Maruthnkerny|Maruthnkerny","Point Pedro|Point Pedro","Karaveddy|Karaveddy",
+    "Kopay|Kopay","Tellippalai|Tellippalai","Uduvil|Uduvil","Sandilipay|Sandilipay","Chankanai|Chankanai"];
+	}
+  else if(s1.value == "Kalutara"){
+		var optionArray = ["|Select Your Town","Kalutara|Kalutara","Horana|Horana","Panadura|Panadura",
+    "Bandaragama|Bandaragama","Matugama|Matugama","Alutgama|Alutgama","Beruwala|Beruwala","Ingiriya|Ingiriya",
+    "Wadduwa|Wadduwa","Agalawatta|Agalawatta","Bulathsinhala|Bulathsinhala","Dodangoda|Dodangoda","Madurawela|Madurawela"
+    ,"Millaniya|Millaniya","Palindanuwara|Palindanuwara","Walallavita|Walallavita"];
+	}
+  else if(s1.value == "Kandy"){
+		var optionArray = ["|Select Your Town","Kandy|Kandy","Katugastota|Katugastota","Peradeniya|Peradeniya",
+    "Gampola|Gampola","Kundasale|Kundasale","Akurana|Akurana","Ampitiya|Ampitiya","Digana|Digana",
+    "Galagedara|Galagedara","Gelioya|Gelioya","Kadugannawa|Kadugannawa","Madawala Bazaar|Madawala Bazaar","Nawalapitiya|Nawalapitiya"
+    ,"Pilimatalawa|Pilimatalawa","Wattegama|Wattegama","Harispattuwa|Harispattuwa","Panvila|Panvila","Minipe|Minipe",
+    "Delthota|Delthota","Hatharaliyadda|Hatharaliyadda","Thumpane|Thumpane","Minipe|Minipe"];
+	}
+  else if(s1.value == "Kegalla"){
+		var optionArray = ["|Select Your Town","Kegalle|Kegalle","Mawanella|Mawanella","Warakapola|Warakapola",
+    "Rambukkana|Rambukkana","Ruwanwella|Ruwanwella","Dehiowita|Dehiowita","Deraniyagala|Deraniyagala","Galigamuwa|Galigamuwa",
+    "Kitulgala|Kitulgala","Yatiyantota|Yatiyantota","Aranayaka|Aranayaka","Bulathkohupitiya|Bulathkohupitiya"];
+	}
+  else if(s1.value == "Kilinochchi"){
+		var optionArray = ["|Select Your Town","Kilinochchi|Kilinochchi","Kandavalai|Kandavalai","Karachchi|Karachchi",
+    "Pachchilaipalli|Pachchilaipalli","Poonakary|Poonakary"];
+	}
+  else if(s1.value == "Kurunegala"){
+		var optionArray = ["|Select Your Town","Kurunegala|Kurunegala","Kuliyapitiya|Kuliyapitiya","Pannala|Pannala",
+    "Pannala|Pannala","Narammala|Narammala","Wariyapola|Wariyapola","Alawwa|Alawwa","Bingiriya|Bingiriya",
+    "Galgamuwa|Galgamuwa","Giriulla|Giriulla","Hettipola|Hettipola","Ibbagamuwa|Ibbagamuwa","Mawathagama|Mawathagama"
+    ,"Nikaweratiya|Nikaweratiya","Polgahawela|Polgahawela","Ambanpola|Ambanpola","Bamunakotuwa|Bamunakotuwa","Ganewatta|Ganewatta",
+    "Kobeigane|Kobeigane","Giribawa|Giribawa","Polpithigama|Polpithigama","Weerambugedara|Weerambugedara"];
+	}
+  else if(s1.value == "Mannar"){
+		var optionArray = ["|Select Your Town","Mannar|Mannar","Madhu|Madhu","Manthai|Manthai","Musalai|Musalai",
+    "Nanaddan|Nanaddan"];
+	}
+  else if(s1.value == "Matale"){
+		var optionArray = ["|Select Your Town","Matale|Matale","Dambulla|Dambulla","Galewela|Galewela",
+    "Pallepola|Pallepola","Sigiriya|Sigiriya","Yatawatta|Yatawatta","Rattota|Rattota","Naula|Naula",
+    "Ukuwela|Ukuwela","Wilgamuwa|Wilgamuwa","Palapathwela|Palapathwela"];
+	}
+  else if(s1.value == "Matara"){
+		var optionArray = ["|Select Your Town","Matara|Matara","Akuressa|Akuressa","Weligama|Weligama",
+    "Hakmana|Hakmana","Dikwella|Dikwella","Devinuwara|Devinuwara","Athuraliya|Athuraliya","Kamburupitiya|Kamburupitiya",
+    "Kotapola|Kotapola","Malimbada|Malimbada","Pasgoda|Pasgoda","Pitabeddara|Pitabeddara","Thihagoda|Thihagoda"
+    ,"Welipitiya|Welipitiya"];
+	}
+  else if(s1.value == "Moneragala"){
+		var optionArray = ["|Select Your Town","Moneragala|Moneragala","Bibile|Bibile","Kataragama|Kataragama",
+    "Wellawaya|Wellawaya","Buttala|Buttala","Bibile|Bibile","Badalkumbura|Badalkumbura","Katharagama|Katharagama",
+    "Madulla|Madulla","Medagama|Medagama","Sevanagala|Sevanagala","Siyambalanduwa|Siyambalanduwa","Thanamalvila|Thanamalvila"
+    ,"Wellawaya|Wellawaya"];
+	}
+  else if(s1.value == "Mullaitivu"){
+		var optionArray = ["|Select Your Town","Mullaitivu|Mullaitivu","Pandiyankulam|Pandiyankulam","Maritimepattu|Maritimepattu",
+    "Oddusuddan|Oddusuddan","Puthukudiyiruppu|Puthukudiyiruppu","Thunukkai|Thunukkai","Welioya|Welioya"];
+	}
+  else if(s1.value == "Nuwara Eliya"){
+		var optionArray = ["|Select Your Town","Nuwara Eliya|Nuwara Eliya","Hatton|Hatton","Ginigathena|Ginigathena",
+    "Madulla|Madulla","Walapane|Walapane","Hanguranketha|Hanguranketha","Ambagamuwa|Ambagamuwa"];
+	}
+  else if(s1.value == "Polonnaruwa"){
+		var optionArray = ["|Select Your Town","Polonnaruwa|Polonnaruwa","Kaduruwela|Kaduruwela","Hingurakgoda|Hingurakgoda",
+    "Medirigiriya|Medirigiriya","Dimbulagala|Dimbulagala","Elahera|Elahera","Lankapura|Lankapura","Thamankaduwa|Thamankaduwa",
+    "Welikanda|Welikanda"];
+	}
+  else if(s1.value == "Puttalam"){
+		var optionArray = ["|Select Your Town","Puttalam|Puttalam","Pallama|Pallama","Chilaw|Chilaw","Wennappuwa|Wennappuwa",
+    "Dankotuwa|Dankotuwa","Nattandiya|Nattandiya","Marawila|Marawila","Anamaduwa|Anamaduwa","Arachchikattuwa|Arachchikattuwa",
+    "Kalpitiya|Kalpitiya","Madampe|Madampe","Mahakumbukkadawala|Mahakumbukkadawala","Mahawewa|Mahawewa","Mundalama|Mundalama"
+    ,"Nawagattegama|Nawagattegama","Pallama|Pallama","Vanathavilluwa|Vanathavilluwa"];
+	}
+  else if(s1.value == "Ratnapura"){
+		var optionArray = ["|Select Your Town","Ratnapura|Ratnapura","Embilipitiya|Embilipitiya","Balangoda|Balangoda",
+    "Pelmadulla|Pelmadulla","Eheliyagoda|Eheliyagoda","Kuruwita|Kuruwita","Ayagama|Ayagama","Elapattha|Elapattha",
+    "Godakawela|Godakawela","Imbulpe|Imbulpe","Kahawatta|Kahawatta","Kalawana|Kalawana","Kiriella|Kiriella"
+    ,"Kolonna|Kolonna","Nivithigala|Nivithigala","Opanayaka|Opanayaka","Weligepola|Weligepola"];
+	}
+  else if(s1.value == "Trincomalee"){
+		var optionArray = ["|Select Your Town","Trincomalee|Trincomalee","Gomarankadawala|Gomarankadawala","Kantalai|Kantalai",
+    "Kinniya|Kinniya","Kuchchaveli|Kuchchaveli","Morawewa|Morawewa","Muttur|Muttur","Padavi Sri Pura|Padavi Sri Pura",
+    "Seruvila|Seruvila","Thambalagamuwa|Thambalagamuwa","Verugal (Echchilampattai)|Verugal (Echchilampattai)"];
+	}
+  else if(s1.value == "Vavuniya"){
+		var optionArray = ["|Select Your Town","Vavuniya|Vavuniya","Vengalacheddikulam|Vengalacheddikulam"];
+	}
+
+  
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+<script type="text/javascript"> 
+x= navigator.geolocation;
+x.getCurrentPosition(success,failure);
+	function success(position){
+
+		//fetch the coords
+		var myLat=position.coords.latitude;
+		var myLong=position.coords.longitude;
+		//$('#lat').html(myLat);
+		//$('#long').html(myLong);
+
+		var myLatlng= new google.maps.LatLng(myLat,myLong);
+		var map;
+		var marker;
+		var geocoder = new google.maps.Geocoder();
+		var infowindow = new google.maps.InfoWindow();
+
+		var mapOptions = {
+			zoom: 18,
+			center: myLatlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+
+		map = new google.maps.Map(document.getElementById("myMap"), mapOptions);
+
+		marker = new google.maps.Marker({
+			map: map,
+			position: myLatlng,
+			draggable: true 
+		});
+
+		geocoder.geocode({'latLng': myLatlng }, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				if (results[0]) {
+					$('#latitude,#longitude').show();
+					$('#address').val(results[0].formatted_address);
+					$('#latitude').val(marker.getPosition().lat());
+					$('#longitude').val(marker.getPosition().lng());
+					infowindow.setContent(results[0].formatted_address);
+					infowindow.open(map, marker);
+				}
+			}
+		});
+
+		google.maps.event.addListener(marker, 'dragend', function() {
+
+			geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					if (results[0]) {
+						$('#address').val(results[0].formatted_address);
+						$('#latitude').val(marker.getPosition().lat());
+						$('#longitude').val(marker.getPosition().lng());
+						infowindow.setContent(results[0].formatted_address);
+						infowindow.open(map, marker);
+					}
+				}
+			});
+	}); 
+
+	}
+
+	function failure(){
+		$('body').append("<p>It didn't work co-ordinates not available!</p>");
+	} 
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+{{!-- for image upload --}}
+<script>
+  $(function() {
+
+  // We can attach the `fileselect` event to all file inputs on the page
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  // We can watch for our custom `fileselect` event like this
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
+  
+});
+</script>
+
+{{!-- for image upload validation --}}
+<script>
+    function validate()
+{
+var extensions = new Array("jpg","jpeg","png");
+
+var image_file = document.form.upl.value;
+
+var image_length = document.form.upl.value.length;
+
+var pos = image_file.lastIndexOf('.') + 1;
+
+var ext = image_file.substring(pos, image_length);
+
+var final_ext = ext.toLowerCase();
+
+for (i = 0; i < extensions.length; i++)
+{
+    if(extensions[i] == final_ext)
+    {
+    return true;
+    }
+}
+
+alert("You must upload an image file with one of the following extensions: "+ extensions.join(', ') +".");
+return false;
+}
+</script>
+{{!-- for image upload validation --}}
+<script>
+   function validate()
+{
+var extensions = new Array("jpg","jpeg","png");
+
+var image_file = document.form.upl1.value;
+
+var image_length = document.form.upl1.value.length;
+
+var pos = image_file.lastIndexOf('.') + 1;
+
+var ext = image_file.substring(pos, image_length);
+
+var final_ext = ext.toLowerCase();
+
+for (i = 0; i < extensions.length; i++)
+{
+    if(extensions[i] == final_ext)
+    {
+    return true;
+    }
+}
+
+alert("You must upload an image file with one of the following extensions: "+ extensions.join(', ') +".");
+return false;
+}
+</script>
+{{!-- for image upload validation --}}
+<script>
+   function validate()
+{
+var extensions = new Array("jpg","jpeg","png");
+
+var image_file = document.form.upl2.value;
+
+var image_length = document.form.upl2.value.length;
+
+var pos = image_file.lastIndexOf('.') + 1;
+
+var ext = image_file.substring(pos, image_length);
+
+var final_ext = ext.toLowerCase();
+
+for (i = 0; i < extensions.length; i++)
+{
+    if(extensions[i] == final_ext)
+    {
+    return true;
+    }
+}
+
+alert("You must upload an image file with one of the following extensions: "+ extensions.join(', ') +".");
+return false;
+}
+</script>

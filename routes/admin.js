@@ -82,18 +82,6 @@ router.post('/sendSMS', function(req, res, next) {
     }
   });
 
-
-
-
-
-  
-
-
-
-
-
-
-
     res.redirect('/');
   
 });
