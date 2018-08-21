@@ -10,10 +10,17 @@ var multer = require('multer');
 const nodemailer = require('nodemailer');
 const xoauth2 = require('xoauth2');
 var AdData=require('../models/vehicle_ad.model');
+var userData =require('../models/user')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('admin_home', { title: 'Welcome admin' });
+
+  userData.find().
+  then(function(doc){
+    res.render('admin_home', { title: 'Welcome admin',items: doc });
+  });
+
+  
 });
 
 router.get('/allAds', function(req, res, next) {
@@ -51,10 +58,10 @@ router.get('/delete_vehicle_ad/:id', function(req, res, next) {
 });
 
 
-router.post('/sendSMS', function(req, res, next) {
+router.post('/sendSMS', function(req, res, next){
   var sms =req.body.sms;
   var number ="+94"+req.body.contactNo;
-  console.log(number);
+  console.log("meka");
 
 
 
@@ -82,7 +89,23 @@ router.post('/sendSMS', function(req, res, next) {
     }
   });
 
+<<<<<<< HEAD
     res.redirect('/');
+=======
+
+
+
+
+  
+
+
+
+
+
+
+
+    res.redirect('/admin/pending_vehicle_ads');
+>>>>>>> master
   
 });
 

@@ -14,4 +14,5 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Vehicle Partner Web site' });
 });
 
+
 module.exports = router;
