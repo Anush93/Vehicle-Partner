@@ -1,0 +1,318 @@
+
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/admin_allAds.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pendingAds.css">
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-default navbar-static-top" style="background-color:#0B0B61">
+    <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+			MENU
+			</button>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+				<a class="navbar-brand" href="#"   style="font-family: 'Berkshire Swash', sans-serif">VehiclePartner.lk</a>
+			</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="http://www.pingpong-labs.com" target="_blank">LogOut</a></li>
+				
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>  	<div class="container-fluid main-container">
+
+
+
+
+  		<div class="col-md-2 sidebar">
+  			<div class="row">
+	<!-- uncomment code for absolute positioning tweek see top comment in css -->
+	<div class="absolute-wrapper"> </div>
+	<!-- Menu -->
+	<div class="side-menu">
+		<nav class="navbar navbar-default" role="navigation">
+			<!-- Main Menu -->
+			<div class="side-menu-container">
+				<ul class="nav navbar-nav">
+					<li class="active"><a ><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+					
+
+
+<!-- Dropdown-->
+					<li class="panel panel-default" id="dropdown">
+						<a data-toggle="collapse" href="#dropdown-lvl1">
+							<span class="glyphicon glyphicon-envelope"></span> All Pending Ads <span class="caret"></span>
+						</a>
+
+						<!-- Dropdown level 1 -->
+						<div id="dropdown-lvl1" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul class="nav navbar-nav">
+									<li><a href="#">All Pending Ads of Vehicle Category</a></li>
+									<li><a href="#">All Pending Ads of Spareparts Category</a></li>
+									<li><a href="#">All Pending Ads of Vehicle Rent Category</a></li>
+
+
+								
+									
+								</ul>
+							</div>
+						</div>
+					</li>
+
+
+
+					<!-- Dropdown-->
+					<li class="panel panel-default" id="dropdown">
+						<a data-toggle="collapse" href="#dropdown-lvl2">
+							<span class="glyphicon glyphicon-list-alt"></span> All Ads <span class="caret"></span>
+						</a>
+
+						<!-- Dropdown level 1 -->
+						<div id="dropdown-lvl2" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul class="nav navbar-nav">
+									<li><a href="#">All Ads of Vehicle Category</a></li>
+									<li><a href="#">All Ads of Spareparts Category</a></li>
+									<li><a href="#">All Ads of Vehicle Rent Category</a></li>
+
+
+								
+									
+								</ul>
+							</div>
+						</div>
+					</li>
+
+					<li><a href="/admin/"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</nav>
+
+	</div>
+</div>  		</div>
+  		<div class="col-md-10 content">
+  			  <div class="panel panel-default">
+	<div class="panel-heading">
+		Pending Vehicle Ads
+	</div>
+<!--	<div class="panel-body">
+		
+
+
+
+
+
+
+
+ {{#each items }}
+        <pre>
+            Title: {{ this.VehicleBrand }}
+            Model: {{ this.VehicleModel }} {{ this.year }}
+            Mileage: {{ this.mileage }}
+            Location: {{ this.district }}, {{ this.town}}
+            Owner: {{ this.Owner }}
+            Contact No: {{ this.Contactno }}
+            Condition: {{ this.condition }}
+            Engine Capacity: {{ this.engineCapacity }}
+            Description: {{ this.description }}
+            Transmissioin Type: {{ this.transmissioinType }}
+            Fuel Type: {{ this.fuelType }}
+            Added Date: {{ this.added_date }}            
+            <img src="/uploads/{{this.image1Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 15%; height: 15%; object-fit: cover; min-height: 15%;align:left;">   <img src="/uploads/{{this.image2Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 15%; height: 15%; object-fit:cover; min-height: 15%;align:left;">   <img src="/uploads/{{this.image3Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 15%; height: 15%; object-fit: cover; min-height: 15%;align:left;"><br>
+
+            <div class="row">
+  <div class="col-lg-3">
+            <a class="btn btn-primary" href="/admin/confirm_vehicle_ad/{{this._id}}" role="button">Confirm This Ad To Publish</a><br>
+            <a class="btn btn-danger" href="/admin/delete_vehicle_ad/{{this._id}}" role="button">Delete This Ad</a>
+            </div>
+            <div class="col-lg-6">
+                <form name="form" method="POST" action="/admin/sendSMS">
+    
+            <div class="form-group shadow-textarea">
+    <textarea class="form-control z-depth-1" id="sms" name="sms" rows="2" placeholder="Write the ..."></textarea>
+    <input type="hidden" id="contactNo" name="contactNo" value={{ this.Contactno }}>
+    <button type="submit" class="btn btn-primary">Send</button>
+</div>
+                </form>
+</div>
+</div>
+            {{!-- <form class="form" method="POST" action="#"><div class="form-group">
+                <label for="inputPassword2" class="sr-only">Message</label> 
+                <textarea class="form-control" rows="2" id="comment"></textarea> 
+                <button type="submit" class="btn btn-primary">Send the faults in this ad</button>
+                </div>
+            </form>   --}}
+        </pre>
+        {{/each}} 
+    </div>   -->
+
+
+
+
+
+
+<div class="panel-body">
+ <div class="col-md-9">
+ 
+
+{{#each items }}
+  <div class="container" >
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-9" >
+            <div class="well well-sm"  >
+                <div class="row" >
+                    <div class="col-sm-6 col-md-4">
+                        <img src="/uploads/{{this.image1Path}}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4> {{ this.VehicleBrand }} {{ this.VehicleModel }} {{ this.year }}</h4>
+                        <small><cite title="San Francisco, USA">Location: {{ this.district }}, {{ this.town}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        {{!-- <small>{{ this.added_date }}</small> --}}
+                        <small>{{ this.mileage }} km</small>
+						<br>
+                        <small>Rs {{ this.price }}</small>
+						<br>
+
+                          
+           
+    
+           <small> Owner: {{ this.Owner }}</small>
+		   <br>
+           <small>Contact No: {{ this.Contactno }}</small> 
+		   <br>
+           <small>Description: {{ this.description }}</small> 
+		   <br>
+           <small>Transmissioin Type: {{ this.transmissioinType }}</small> 
+		   <br>
+            <small>Fuel Type: {{ this.fuelType }}</small>
+			<br>
+			<br>
+			 <a class="btn btn-success" href="/admin/confirm_rent_ad/{{this._id}}/{{this.Contactno}}" role="button">Confirm</a>
+            <a class="btn btn-danger" href="/admin/delete_rent_ad/{{this._id}}" role="button">Delete</a>
+            <br>
+			<br>
+             
+                <form name="form" method="POST" action="/admin/sendSMS">
+    
+        
+    <textarea class="form-control z-depth-1" id="sms" name="sms" rows="2" placeholder="Write the improvements ..."></textarea>
+    <input type="hidden" id="contactNo" name="contactNo" value={{ this.Contactno }}>
+	<br>	
+    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+                        {{!-- <button type="button" class="btn btn-secondary">More..</button> --}}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  {{/each}}   
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  		</div>
+  		<footer class="pull-left footer">
+  			<p class="col-md-12">
+  				<hr class="divider">
+  				Copyright &COPY; 2018 <a>VehiclePartner.lk</a>
+  			</p>
+  		</footer>
+  	</div>
+
+<script>
+
+    $(function () {
+  	$('.navbar-toggle-sidebar').click(function () {
+  		$('.navbar-nav').toggleClass('slide-in');
+  		$('.side-body').toggleClass('body-slide-in');
+  		$('#search').removeClass('in').addClass('collapse').slideUp(200);
+  	});
+
+  	$('#search-trigger').click(function () {
+  		$('.navbar-nav').removeClass('slide-in');
+  		$('.side-body').removeClass('body-slide-in');
+  		$('.search-input').focus();
+  	});
+  });
+
+
+
+
+
+
+$(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+   
+});
+
+
+
+
+</script>

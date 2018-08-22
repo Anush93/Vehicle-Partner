@@ -12,6 +12,31 @@ const xoauth2 = require('xoauth2');
 var AdData=require('../models/vehicle_ad.model');
 var userData =require('../models/user');
 var Garage=require('../models/garage.model');
+const Nexmo = require('nexmo');
+var rentAdData=require('../models/rent_ad.model');
+
+const nexmo = new Nexmo({
+  apiKey: '7a13ba49',
+  apiSecret: '1vC5i6zmDnRpGDKH'
+});
+
+// const from = 'VehiclePartner.lk';
+// const to = '+94779868259';
+// const text = 'A text message sent using the Nexmo SMS API Now your ad is live on VehiclePartner.lk';
+
+// router.post('/sms', function(req, res, next) {
+//   nexmo.message.sendSms(from, to, text, (error, response) => {
+//     if(error) {
+//       throw error;
+//     } else if(response.messages[0].status != '0') {
+//       console.error(response);
+//       throw 'Nexmo returned back a non-zero status';
+//     } else {
+//       console.log(response);
+//       res.redirect('/');
+//     }
+//   });
+// });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -35,10 +60,24 @@ router.get('/all_Ads', function(req, res, next) {
 
 //admin confirmation of vehicle ad///////////////////////////////
 
-router.get('/confirm_vehicle_ad/:id', function(req, res, next) {
+router.get('/confirm_vehicle_ad/:id/:contactno', function(req, res, next) {
   var id=req.params.id;
+  var from = 'VehiclePartner.lk';
+  var to = '+94'+req.params.contactno;
+  var text = 'Now your advertisment is live on VehiclePartner.lk';
   AdData.findById(id, function (err,vehicle_ad) {
 
+    nexmo.message.sendSms(from, to, text, (error, response) => {
+      if(error) {
+        throw error;
+      } else if(response.messages[0].status != '0') {
+        console.error(response);
+        throw 'Nexmo returned back a non-zero status';
+      } else {
+        console.log(response);
+        //res.redirect('/admin/pending_vehicle_ads');
+      }
+    });
     vehicle_ad.set({isLive:1});
     vehicle_ad.save(function (err, updatedAd) {
       if (err) return handleError(err);
@@ -70,20 +109,53 @@ router.get('/deleteVehicleAd/:id', function(req, res, next) {
   res.redirect('/admin/all_Ads'); 
 }); 
 //confirmation of garages
-router.get('/confirm_garage/:id', function(req, res, next) {
+router.get('/confirm_garage/:id/:contactno', function(req, res, next) {
   var id=req.params.id;
+  var from = 'VehiclePartner.lk';
+  var to = '+94'+req.params.contactno;
+  var text = 'Now your Garage is live on VehiclePartner.lk';
+
   Garage.findById(id, function (err,garage_ad) {
 
+<<<<<<< HEAD
+    nexmo.message.sendSms(from, to, text, (error, response) => {
+      if(error) {
+        throw error;
+      } else if(response.messages[0].status != '0') {
+        console.error(response);
+        throw 'Nexmo returned back a non-zero status';
+      } else {
+        console.log(response);
+        //res.redirect('/admin/pending_vehicle_ads');
+      }
+    });
+  //Garage.findById(id, function (err,garage_ad) {
+
+
+//delete all add
+
+/*router.get('/deleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
+});
+router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.redirect('/admin/all_Ads'); 
+}); */
+=======
 
 
 
 
+>>>>>>> master
 
     garage_ad.set({isLive:1});
     garage_ad.save(function (err, updatedAd) {
       if (err) return handleError(err);
       console.log(updatedAd);
-      res.redirect('/admin/pending_garages');   
+      res.redirect('/admin/pending_rent_ads');   
       });
     });
   });
@@ -110,6 +182,10 @@ router.get('/delete_garage/:id', function(req, res, next) {
   res.render('pending-garages', { title: 'Pending Garages', items: doc }); 
 });
 ///////////////////////////////////////////////////////////////
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 
 //delete all add
 // router.get('/deleteVehicleAd/:id', function(req, res, next) {
@@ -151,6 +227,67 @@ router.post('/sendSMS', function(req, res, next){
     res.redirect('/admin/pending_vehicle_ads');
     ///res.redirect('/admin/pending_vehicle_ads');
   
+});
+
+///renting ads///////////////////////////////////////////////////////////////
+
+router.get('/confirm_rent_ad/:id/:contactno', function(req, res, next) {
+  var id=req.params.id;
+  var from = 'VehiclePartner.lk';
+  var to = '+94'+req.params.contactno;
+  var text = 'Now your Advertisement is live on VehiclePartner.lk';
+  
+  rentAdData.findById(id, function (err,rent_ad) {
+
+    nexmo.message.sendSms(from, to, text, (error, response) => {
+      if(error) {
+        throw error;
+      } else if(response.messages[0].status != '0') {
+        console.error(response);
+        throw 'Nexmo returned back a non-zero status';
+      } else {
+        console.log(response);
+        //res.redirect('/admin/pending_vehicle_ads');
+      }
+    });
+  //Garage.findById(id, function (err,garage_ad) {
+
+
+//delete all add
+
+/*router.get('/deleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
+});
+router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.redirect('/admin/all_Ads'); 
+}); */
+
+rent_ad.set({isLive:1});
+rent_ad.save(function (err, updatedAd) {
+      if (err) return handleError(err);
+      console.log(updatedAd);
+      res.redirect('/admin/pending_rent_ads');   
+      });
+    });
+  });
+
+//to view all pending renting ads
+router.get('/pending_rent_ads', function(req, res, next) {
+  rentAdData.find({isLive:0}).
+  then(function(doc){
+    res.render('pending-rent-ads', { title: 'Pending Rent Ads', items: doc });
+  });
+});
+
+//delete renting ads from admin view
+router.get('/delete_rent_ad/:id', function(req, res, next) {
+  var id = req.params.id;
+  rentAdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.render('pending-rent-ads', { title: 'Pending Rent Ads', items: doc }); 
 });
 
 

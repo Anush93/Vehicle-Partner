@@ -28,6 +28,10 @@ router.get('/vehicle_ad_form', function(req, res, next) {
     res.render('vehicle-ad-form', { title: 'Fill Your Advertisment Details' });
   });
 
+  router.get('/rent_ad_form', function(req, res, next) {
+    res.render('rent-ad-form', { title: 'Fill Your Advertisment Details' });
+  });
+
   router.get('/login', function(req, res, next) {
     res.render('login', { title: 'Login' });
   });
