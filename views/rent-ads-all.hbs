@@ -13,7 +13,7 @@
 <body style="background-color:#F2F3F5">
 <div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
   	<div class="container">
-      <div class="navbar-header"><a class="navbar-brand" href="#">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <div class="navbar-header"><a class="navbar-brand" href="/">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="glyphicon glyphicon-bar"></span>
           <span class="glyphicon glyphicon-bar"></span>
           <span class="glyphicon glyphicon-bar"></span>
@@ -172,20 +172,56 @@
         <!--/span-->
         <div class="col-md-6">
     
+       
+
         {{#each items }}
-        <pre>
-            Title: {{ this.VehicleBrand }}</a>
-            Model: {{ this.VehicleModel }} {{ this.year }}
-            Location: {{ this.district }}, {{ this.town}}
-            Aded date: {{ this.added_date }}
-            <img src="/uploads/{{this.image1Path}}" class="img-rounded" alt="not loaded" 
-            style="width: 25%;min-height: 25%;align:left;">
-        </pre>
-        {{/each}}
+  <div class="container" >
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6" >
+            <div class="well well-sm" style="background-color:#ffffff;" >
+                <div class="row" >
+                    <div class="col-sm-6 col-md-4">
+                        <img src="/uploads/{{this.image1Path}}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4> {{ this.VehicleBrand }} {{ this.VehicleModel }} {{ this.year }}</h4>
+                        <small><cite title="San Francisco, USA">Location: {{ this.district }}, {{ this.town}} <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        {{!-- <small>{{ this.added_date }}</small> --}}
+                        
+                        {{!-- <button type="button" class="btn btn-secondary">More..</button> --}}
+                        
+                        <small>Fuel Type: {{ this.fuelType }}</small>
+                        <small>Description: {{ this.description }}</small>
+                        <small>Contact No: {{ this.Contactno }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+  </div>
+  {{/each}}   
+    </div>
+<div class="col-md-3">
+            <div class="sidebar-nav-fixed pull-right affix">
+                <div class="well" style="background-color:#EAEBEF;">
+                    <ul class="nav ">
+                        <img src="/images/1.jpg" alt="" class="img-responsive" />
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/sidebar-nav-fixed -->
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+
 </div>
-</form>
-<div class="col-sm-3"></div>
+<!--/.fluid-container-->
+</body>
+</html>
+    
   <script>
 function populate(s1,s2){
 	var s1 = document.getElementById(s1);
