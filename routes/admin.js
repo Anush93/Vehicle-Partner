@@ -59,15 +59,21 @@ router.get('/pending_vehicle_ads', function(req, res, next) {
 router.get('/delete_vehicle_ad/:id', function(req, res, next) {
   var id = req.params.id;
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
-  res.render('admin_home', { title: 'Welcome admin' }); 
+  res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
 });
 
 //delete all add
-router.get('/deleteVehicleAd/:id', function(req, res, next) {
+
+/*router.get('/deleteVehicleAd/:id', function(req, res, next) {
   var id = req.params.id;
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
-  res.render('admin_allads', { title: 'All Vehicle Ads' }); 
+  res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
 });
+router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.redirect('/admin/all_Ads'); 
+}); */
 
 
 router.post('/sendSMS', function(req, res, next){
@@ -100,7 +106,7 @@ router.post('/sendSMS', function(req, res, next){
       console.log('Email sent: ' + info.response);
     }
   });
-    res.redirect('/');
+    res.redirect('/admin/pending_vehicle_ads');
     ///res.redirect('/admin/pending_vehicle_ads');
   
 });

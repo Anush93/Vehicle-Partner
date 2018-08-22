@@ -9,7 +9,7 @@ opts.secretOrKey = config.secret;
 
 module.exports =function(passport){
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-    User.findUserbyId({_id: jwt_payload._doc._id}, function(err, user) {
+    User.findUserbyId({_id: jwt_payload._id}, function(err, user) {
         if (err) {
             return done(err, false);
         }

@@ -46,10 +46,10 @@ router.post("/login",function(req,res){
         User.passwordCheck(password,user.password,function(err,match){
         if(err) throw err;
         if (match){
-           /* const token = jwt.sign(user.toJSON(),config.secret,{expiresIn:86400});
+            const token = jwt.sign(user.toJSON(),config.secret,{expiresIn:86400});
              res.json({
                  state:true,
-                 token:"JWT "+ token,
+                 token:"Bearer "+ token,
                  user:{
                      id:user._id,
                      username:user.username,
@@ -59,18 +59,23 @@ router.post("/login",function(req,res){
                  }
 
 
-             }); */
-             res.render('user-profile', { title: 'User Profile' });
+             }); 
+            
+        }
+        else{
+            res.json({state:false,msg:"password does not match"});
         }
     });
 });
 });
 
-router.post('/profile', passport.authenticate('jwt', { session: false }),
+router.post('/profile', passport.authenticate('Bearer', { session: false }),
     function(req, res) {
         res.json({user:req.user});
     }
 );
+
+
 
 
 module.exports = router;
