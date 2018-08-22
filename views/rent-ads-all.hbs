@@ -1,0 +1,355 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/add.css">
+
+<link href='https://fonts.googleapis.com/css?family=Concert One' rel='stylesheet'>
+<title>{{title}}</title>
+</head>
+<body style="background-color:#F2F3F5">
+<div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
+  	<div class="container">
+      <div class="navbar-header"><a class="navbar-brand" href="#">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+        </a>
+      </div>
+        <div class="navbar-collapse">
+           
+			<ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user" style="color: #FFFFFF"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in" style="color: #FFFFFF"></span> Login</a></li>
+      </ul>
+        
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+<form action="/vehicle_ads/search" method="get">
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sidebar-nav-fixed affix" >
+                <div class="well" style="background-color:#EAEBEF;">
+                    <ul class="nav "><!-- start of search fiels-->
+                        <div class="form-group">
+    <label for="exampleSelect1">District</label>
+    <select class="form-control" id="slct1" name="district" onchange="populate(this.id,'slct2')">
+        <option>Your District</option>{{!--user district should retrieve --}}
+        <option value="Ampara">Ampara</option>
+        <option value="Anuradhapura">Anuradhapura</option>
+        <option value="Badulla">Badulla</option>
+        <option value="Batticaloa">Batticaloa</option>
+        <option value="Colombo">Colombo</option>
+        <option value="Galle">Galle</option>
+        <option value="Gampaha">Gampaha</option>
+        <option value="Hambantota">Hambantota</option>
+        <option value="Jaffna">Jaffna</option>
+        <option value="Kalutara">Kalutara</option>
+        <option value="Kandy">Kandy</option>
+        <option value="Kegalla">Kegalla</option>
+        <option value="Kilinochchi">Kilinochchi</option>
+        <option value="Kurunegala">Kurunegala</option>
+        <option value="Mannar">Mannar</option>
+        <option value="Matale">Matale</option>
+        <option value="Matara">Matara</option>
+        <option value="Moneragala">Moneragala</option>
+        <option value="Mullaitivu">Mullaitivu</option>
+        <option value="Nuwara Eliya">Nuwara Eliya</option>
+        <option value="Polonnaruwa">Polonnaruwa</option>
+        <option value="Puttalam">Puttalam</option>
+        <option value="Ratnapura">Ratnapura</option>
+        <option value="Trincomalee">Trincomalee</option>
+        <option value="Vavuniya">Vavuniya</option>
+  </select>
+  </div><br>
+
+  <div class="form-group">
+    <label for="exampleSelect1">Town</label>
+    <select class="form-control" id="slct2" name="town" >
+          <option</option>
+    </select>
+  </div><br>
+
+<div class="form-group">
+    <label for="exampleSelect1">Vehicle Brand</label>
+    <select class="form-control" id="VehicleBrand" name="VehicleBrand" >
+      <option value="">Brand  </option>
+      <option value="aston-martin">Aston Martin</option>
+      <option value="audi">Audi</option>
+      <option value="austin">Austin</option>
+      <option value="bmw">BMW</option>
+      <option value="buick">Buick</option>
+          <option value="cadillac">Cadillac</option>
+          <option value="changan">Changan</option>
+          <option value="chery">Chery</option>
+          <option value="chevrolet">Chevrolet</option>
+          <option value="chrysler">Chrysler</option>
+          <option value="citroen">Citroën</option>
+          <option value="daewoo">Daewoo</option>
+          <option value="daihatsu">Daihatsu</option>
+          <option value="datsun">Datsun</option>
+          <option value="dodge">Dodge</option>
+          <option value="ferrari">Ferrari</option>
+          <option value="fiat">Fiat</option>
+          <option value="ford">Ford</option>
+          <option value="geely">Geely</option>
+          <option value="gmc">GMC</option>
+          <option value="hino">Hino</option>
+          <option value="honda">Honda</option>
+          <option value="hummer">Hummer</option>
+          <option value="hyundai">Hyundai</option>
+          <option value="isuzu">Isuzu</option>
+          <option value="jaguar">Jaguar</option>
+          <option value="jeep">Jeep</option>
+          <option value="kia">Kia</option>
+          <option value="lamborghini">Lamborghini</option>
+          <option value="land-rover">Land Rover</option>
+          <option value="lexus">Lexus</option>
+          <option value="lincoln">Lincoln</option>
+          <option value="mahindra">Mahindra</option>
+          <option value="maruti">Maruti</option>
+          <option value="mazda">Mazda</option>
+          <option value="mercedes-benz">Mercedes-Benz</option>
+          <option value="mg">MG</option>
+          <option value="micro">Micro</option>
+          <option value="mini">Mini</option>
+          <option value="mitsubishi">Mitsubishi</option>
+          <option value="morris">Morris</option>
+          <option value="moto-guzzi">Moto Guzzi</option>
+          <option value="nissan">Nissan</option>
+          <option value="oldsmobile">Oldsmobile</option>
+          <option value="opel">Opel</option>
+          <option value="perodua">Perodua</option>
+          <option value="peugeot">Peugeot</option>
+          <option value="plymoth">Plymouth</option>
+          <option value="pontiac">Pontiac</option>
+          <option value="porsche">Porsche</option>
+          <option value="proton">Proton</option>
+          <option value="renault">Renault</option>
+          <option value="rover">Rover</option>
+          <option value="royal-enfield">Royal Enfield</option>
+          <option value="saab">SAAB</option>
+          <option value="scion">Scion</option>
+          <option value="seat">SEAT</option>
+          <option value="skoda">Skoda</option>
+          <option value="smart">Smart</option>
+          <option value="ssang-yong">Ssang Yong</option>
+          <option value="subaru">Subaru</option>
+          <option value="suzuki">Suzuki</option>
+          <option value="tata">Tata</option>
+          <option value="toyota">Toyota</option>
+          <option value="vauxhall">Vauxhall</option>
+          <option value="volkswagen">Volkswagen</option>
+          <option value="volvo">Volvo</option>
+          <option value="zoyte">Zotye</option>
+      <option value="other">Other brand</option>
+    </select>
+    </div><br>
+
+<div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Vehicle Model</label>
+      <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="VehicleModel">
+            {{!-- <a href="/vehicle_ads/search" class="btn btn-default" role="button"><i class="glyphicon glyphicon-search"></i></a></div> --}}
+        <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+        </div>
+  </div>
+  <br>
+
+                    </ul><!-- end of search fielad-->
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/sidebar-nav-fixed -->
+        </div>
+        </form>
+        <!--/span-->
+        <div class="col-md-6">
+    
+        {{#each items }}
+        <pre>
+            Title: {{ this.VehicleBrand }}</a>
+            Model: {{ this.VehicleModel }} {{ this.year }}
+            Location: {{ this.district }}, {{ this.town}}
+            Aded date: {{ this.added_date }}
+            <img src="/uploads/{{this.image1Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 25%;min-height: 25%;align:left;">
+        </pre>
+        {{/each}}
+    </div>
+</div>
+</form>
+<div class="col-sm-3"></div>
+  <script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "Ampara"){
+		var optionArray = ["|Select Your Town","Akkarepattu|Akkarepattu","Ampara|Ampara","Kalmunai|Kalmunai",
+    "Sainthamaruthu|Sainthamaruthu","Dehiattakandiya|Dehiattakandiya","Padiyathalawa|Padiyathalawa",
+    "Mahaoya|Mahaoya","Uhana|Uhana","Navithanveli|Navithanveli","Sammanthurai|Sammanthurai"
+    ,"Kalmunai (Tamil)|Kalmunai (Tamil)","Karaitheevu|Karaitheevu","Ninthavur|Ninthavur"
+    ,"Addalaichenai|Addalaichenai","Irakkamam|Irakkamam","Alayadiwembu|Alayadiwembu","Damana|Damana","Thirukkovil|Thirukkovil"
+    ,"Pothuvil|Pothuvil","Lahugala|Lahugala"];
+	} 
+  else if(s1.value == "Anuradhapura"){
+		var optionArray = ["|Select Your Town","Anuradhapura|Anuradhapura","Eppawala|Eppawala","Galenbindunuwewa|Galenbindunuwewa",
+    "Galnewa|Galnewa","Habarana|Habarana","Horowpothana|Horowpothana","Kekirawa|Kekirawa","Medawachchiya|Medawachchiya",
+    "Mihintale|Mihintale","Nochchiyagama|Nochchiyagama","Talawa|Talawa","Ipalogama|Ipalogama","Kahatagasdigiliya|Kahatagasdigiliya"
+    ,"Kebithigollewa|Kebithigollewa","Nachchadoowa|Nachchadoowa","Padaviya|Padaviya","Palagala|Palagala","Palugaswewa|Palugaswewa",
+    "Rajanganaya|Rajanganaya","Rambewa|Rambewa","Thirappane|Thirappane","Tambuttegama|Tambuttegama"];
+	} 
+  else if(s1.value == "Badulla"){
+		var optionArray = ["|Select Your Town","Badulla|Badulla","Bandarawela|Bandarawela","Bandarawela|Bandarawela",
+    "Welimada|Welimada","Mahiyanganaya|Mahiyanganaya","Hali Ela|Hali Ela","Diyatalawa|Diyatalawa","Ella|Ella",
+    "Haputale|Haputale","Passara|Passara","Soranathota|Soranathota","Meegahakivula|Meegahakivula","Kandaketiya|Kandaketiya"
+    ,"Lunugala|Lunugala","Rideemaliyadda|Rideemaliyadda","Haldummulla|Haldummulla"];
+	}
+  else if(s1.value == "Batticaloa"){
+		var optionArray = ["|Select Your Town","Batticaloa|Batticaloa","Eravur Pattu|Eravur Pattu","Eravur Town|Eravur Town","Kattankudy|Kattankudy",
+    "Koralai Pattu|Koralai Pattu","Manmunai|Manmunai","Porativu Pattu|Porativu Pattu"];
+	}
+  else if(s1.value == "Colombo"){
+		var optionArray = ["|Select Your Town","Nugegoda|Nugegoda","Dehiwala|Dehiwala","Piliyandala|Piliyandala",
+    "Maharagama|Maharagama","Kottawa|Kottawa","Angoda|Angoda","Athurugiriya|Athurugiriya","Avissawella|Avissawella",
+    "Battaramulla|Battaramulla","Boralesgamuwa|Boralesgamuwa","Colombo 1|Colombo 1","Colombo 2|Colombo 2",
+    "Colombo 3|Colombo 3","Colombo 4|Colombo 4","Colombo 5|Colombo 5","Colombo 6|Colombo 6","Colombo 7|Colombo 7",
+    "Colombo 8|Colombo 8","Colombo 9|Colombo 9","Colombo 10|Colombo 10","Colombo 11|Colombo 11","Colombo 12|Colombo 12",
+    "Colombo 13|Colombo 13","Colombo 14|Colombo 14","Colombo 15|Colombo 15","Hanwella|Hanwella","Homagama|Homagama",
+    "Kaduwela|Kaduwela","Kesbewa|Kesbewa","Kohuwala|Kohuwala","Kolonnawa|Kolonnawa","Kotte|Kotte",
+    "Malabe|Malabe","Moratuwa|Moratuwa","Mount|Mount","Nawala|Nawala","Padukka|Padukka",
+    "Pannipitiya|Pannipitiya","Rajagiriya|Rajagiriya","Ratmalana|Ratmalana","Talawatugoda|Talawatugoda","Wellampitiya|Wellampitiya"];
+	}
+  else if(s1.value == "Galle"){
+		var optionArray = ["|Select Your Town","Galle|Galle","Ambalangoda|Ambalangoda","Elpitiya|Elpitiya",
+    "Hikkaduwa|Hikkaduwa","Baddegama|Baddegama","Ahangama|Ahangama","Batapola|Batapola","Bentota|Bentota",
+    "Karapitiya|Karapitiya","Akmeemana|Akmeemana","Balapitiya|Balapitiya","Elpitiya|Elpitiya",
+    "Gonapinuwala|Gonapinuwala","Habaraduwa|Habaraduwa","Imaduwa|Imaduwa","Karandeniya|Karandeniya","Nagoda|Nagoda",
+    "Neluwa|Neluwa","Niyagama|Niyagama","Thawalama|Thawalama","Yakkalamulla|Yakkalamulla"];
+	}
+  else if(s1.value == "Gampaha"){
+		var optionArray = ["|Select Your Town","Gampaha|Gampaha","Negombo|Negombo","Kelaniya|Kelaniya",
+    "Kiribathgoda|Kiribathgoda","Kadawatha|Kadawatha","Delgoda|Delgoda","Divulapitiya|Divulapitiya","Ganemulla|Ganemulla",
+    "Ja-Ela|Ja-Ela","Kandana|Kandana","Katunayake|Katunayake","Minuwangoda|Minuwangoda","Mirigama|Mirigama"
+    ,"Nittambuwa|Nittambuwa","Ragama|Ragama","Veyangoda|Veyangoda","Wattala|Wattala","Dompe|Dompe",
+    "Mahara|Mahara"];
+	}
+  else if(s1.value == "Hambantota"){
+		var optionArray = ["|Select Your Town","Hambantota|Hambantota","Tangalla|Tangalla","Beliatta|Beliatta","Ambalantota|Ambalantota",
+    "Tissamaharama|Tissamaharama","Ambalantota|Ambalantota","Angunakolapelessa|Angunakolapelessa","Katuwana|Katuwana",
+    "Lunugamvehera|Lunugamvehera","Okewela|Okewela","Sooriyawewa|Sooriyawewa","Walasmulla|Walasmulla","Weeraketiya|Weeraketiya"];
+	}
+  else if(s1.value == "Jaffna"){
+		var optionArray = ["|Select Your Town","Jaffna|Jaffna","Nallur|Nallur","Chavakachcheri|Chavakachcheri",
+    "Delft|Delft","Karainagar|Karainagar","Maruthnkerny|Maruthnkerny","Point Pedro|Point Pedro","Karaveddy|Karaveddy",
+    "Kopay|Kopay","Tellippalai|Tellippalai","Uduvil|Uduvil","Sandilipay|Sandilipay","Chankanai|Chankanai"];
+	}
+  else if(s1.value == "Kalutara"){
+		var optionArray = ["|Select Your Town","Kalutara|Kalutara","Horana|Horana","Panadura|Panadura",
+    "Bandaragama|Bandaragama","Matugama|Matugama","Alutgama|Alutgama","Beruwala|Beruwala","Ingiriya|Ingiriya",
+    "Wadduwa|Wadduwa","Agalawatta|Agalawatta","Bulathsinhala|Bulathsinhala","Dodangoda|Dodangoda","Madurawela|Madurawela"
+    ,"Millaniya|Millaniya","Palindanuwara|Palindanuwara","Walallavita|Walallavita"];
+	}
+  else if(s1.value == "Kandy"){
+		var optionArray = ["|Select Your Town","Kandy|Kandy","Katugastota|Katugastota","Peradeniya|Peradeniya",
+    "Gampola|Gampola","Kundasale|Kundasale","Akurana|Akurana","Ampitiya|Ampitiya","Digana|Digana",
+    "Galagedara|Galagedara","Gelioya|Gelioya","Kadugannawa|Kadugannawa","Madawala Bazaar|Madawala Bazaar","Nawalapitiya|Nawalapitiya"
+    ,"Pilimatalawa|Pilimatalawa","Wattegama|Wattegama","Harispattuwa|Harispattuwa","Panvila|Panvila","Minipe|Minipe",
+    "Delthota|Delthota","Hatharaliyadda|Hatharaliyadda","Thumpane|Thumpane","Minipe|Minipe"];
+	}
+  else if(s1.value == "Kegalla"){
+		var optionArray = ["|Select Your Town","Kegalle|Kegalle","Mawanella|Mawanella","Warakapola|Warakapola",
+    "Rambukkana|Rambukkana","Ruwanwella|Ruwanwella","Dehiowita|Dehiowita","Deraniyagala|Deraniyagala","Galigamuwa|Galigamuwa",
+    "Kitulgala|Kitulgala","Yatiyantota|Yatiyantota","Aranayaka|Aranayaka","Bulathkohupitiya|Bulathkohupitiya"];
+	}
+  else if(s1.value == "Kilinochchi"){
+		var optionArray = ["|Select Your Town","Kilinochchi|Kilinochchi","Kandavalai|Kandavalai","Karachchi|Karachchi",
+    "Pachchilaipalli|Pachchilaipalli","Poonakary|Poonakary"];
+	}
+  else if(s1.value == "Kurunegala"){
+		var optionArray = ["|Select Your Town","Kurunegala|Kurunegala","Kuliyapitiya|Kuliyapitiya","Pannala|Pannala",
+    "Pannala|Pannala","Narammala|Narammala","Wariyapola|Wariyapola","Alawwa|Alawwa","Bingiriya|Bingiriya",
+    "Galgamuwa|Galgamuwa","Giriulla|Giriulla","Hettipola|Hettipola","Ibbagamuwa|Ibbagamuwa","Mawathagama|Mawathagama"
+    ,"Nikaweratiya|Nikaweratiya","Polgahawela|Polgahawela","Ambanpola|Ambanpola","Bamunakotuwa|Bamunakotuwa","Ganewatta|Ganewatta",
+    "Kobeigane|Kobeigane","Giribawa|Giribawa","Polpithigama|Polpithigama","Weerambugedara|Weerambugedara"];
+	}
+  else if(s1.value == "Mannar"){
+		var optionArray = ["|Select Your Town","Mannar|Mannar","Madhu|Madhu","Manthai|Manthai","Musalai|Musalai",
+    "Nanaddan|Nanaddan"];
+	}
+  else if(s1.value == "Matale"){
+		var optionArray = ["|Select Your Town","Matale|Matale","Dambulla|Dambulla","Galewela|Galewela",
+    "Pallepola|Pallepola","Sigiriya|Sigiriya","Yatawatta|Yatawatta","Rattota|Rattota","Naula|Naula",
+    "Ukuwela|Ukuwela","Wilgamuwa|Wilgamuwa","Palapathwela|Palapathwela"];
+	}
+  else if(s1.value == "Matara"){
+		var optionArray = ["|Select Your Town","Matara|Matara","Akuressa|Akuressa","Weligama|Weligama",
+    "Hakmana|Hakmana","Dikwella|Dikwella","Devinuwara|Devinuwara","Athuraliya|Athuraliya","Kamburupitiya|Kamburupitiya",
+    "Kotapola|Kotapola","Malimbada|Malimbada","Pasgoda|Pasgoda","Pitabeddara|Pitabeddara","Thihagoda|Thihagoda"
+    ,"Welipitiya|Welipitiya"];
+	}
+  else if(s1.value == "Moneragala"){
+		var optionArray = ["|Select Your Town","Moneragala|Moneragala","Bibile|Bibile","Kataragama|Kataragama",
+    "Wellawaya|Wellawaya","Buttala|Buttala","Bibile|Bibile","Badalkumbura|Badalkumbura","Katharagama|Katharagama",
+    "Madulla|Madulla","Medagama|Medagama","Sevanagala|Sevanagala","Siyambalanduwa|Siyambalanduwa","Thanamalvila|Thanamalvila"
+    ,"Wellawaya|Wellawaya"];
+	}
+  else if(s1.value == "Mullaitivu"){
+		var optionArray = ["|Select Your Town","Mullaitivu|Mullaitivu","Pandiyankulam|Pandiyankulam","Maritimepattu|Maritimepattu",
+    "Oddusuddan|Oddusuddan","Puthukudiyiruppu|Puthukudiyiruppu","Thunukkai|Thunukkai","Welioya|Welioya"];
+	}
+  else if(s1.value == "Nuwara Eliya"){
+		var optionArray = ["|Select Your Town","Nuwara Eliya|Nuwara Eliya","Hatton|Hatton","Ginigathena|Ginigathena",
+    "Madulla|Madulla","Walapane|Walapane","Hanguranketha|Hanguranketha","Ambagamuwa|Ambagamuwa"];
+	}
+  else if(s1.value == "Polonnaruwa"){
+		var optionArray = ["|Select Your Town","Polonnaruwa|Polonnaruwa","Kaduruwela|Kaduruwela","Hingurakgoda|Hingurakgoda",
+    "Medirigiriya|Medirigiriya","Dimbulagala|Dimbulagala","Elahera|Elahera","Lankapura|Lankapura","Thamankaduwa|Thamankaduwa",
+    "Welikanda|Welikanda"];
+	}
+  else if(s1.value == "Puttalam"){
+		var optionArray = ["|Select Your Town","Puttalam|Puttalam","Pallama|Pallama","Chilaw|Chilaw","Wennappuwa|Wennappuwa",
+    "Dankotuwa|Dankotuwa","Nattandiya|Nattandiya","Marawila|Marawila","Anamaduwa|Anamaduwa","Arachchikattuwa|Arachchikattuwa",
+    "Kalpitiya|Kalpitiya","Madampe|Madampe","Mahakumbukkadawala|Mahakumbukkadawala","Mahawewa|Mahawewa","Mundalama|Mundalama"
+    ,"Nawagattegama|Nawagattegama","Pallama|Pallama","Vanathavilluwa|Vanathavilluwa"];
+	}
+  else if(s1.value == "Ratnapura"){
+		var optionArray = ["|Select Your Town","Ratnapura|Ratnapura","Embilipitiya|Embilipitiya","Balangoda|Balangoda",
+    "Pelmadulla|Pelmadulla","Eheliyagoda|Eheliyagoda","Kuruwita|Kuruwita","Ayagama|Ayagama","Elapattha|Elapattha",
+    "Godakawela|Godakawela","Imbulpe|Imbulpe","Kahawatta|Kahawatta","Kalawana|Kalawana","Kiriella|Kiriella"
+    ,"Kolonna|Kolonna","Nivithigala|Nivithigala","Opanayaka|Opanayaka","Weligepola|Weligepola"];
+	}
+  else if(s1.value == "Trincomalee"){
+		var optionArray = ["|Select Your Town","Trincomalee|Trincomalee","Gomarankadawala|Gomarankadawala","Kantalai|Kantalai",
+    "Kinniya|Kinniya","Kuchchaveli|Kuchchaveli","Morawewa|Morawewa","Muttur|Muttur","Padavi Sri Pura|Padavi Sri Pura",
+    "Seruvila|Seruvila","Thambalagamuwa|Thambalagamuwa","Verugal (Echchilampattai)|Verugal (Echchilampattai)"];
+	}
+  else if(s1.value == "Vavuniya"){
+		var optionArray = ["|Select Your Town","Vavuniya|Vavuniya","Vengalacheddikulam|Vengalacheddikulam"];
+	}
+
+  
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+
+
+    
+
+

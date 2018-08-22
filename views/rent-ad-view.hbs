@@ -1,0 +1,128 @@
+
+{{!-- <img src="/uploads/{{imgPath}}" class="img-rounded" alt="not loaded"> --}}
+<link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Concert One' rel='stylesheet'>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/vehicleAdView.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/add.css">
+  <title>{{title}}</title>
+</head>
+<body style="background-color:#F2F3F5">
+
+
+
+
+
+
+
+
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
+  	<div class="container">
+      <div class="navbar-header"><a class="navbar-brand" href="#">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+        </a>
+      </div>
+        <div class="navbar-collapse">
+           
+			
+        
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+
+<div class="container">
+      <div class="row">
+     
+        <div align="center" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 toppad" >
+   
+   
+          <div class="panel panel-info">
+
+               {{#each items }}
+        
+            <div class="panel-heading">
+              <h3 class="panel-title">{{ this.VehicleBrand }} {{ this.VehicleModel }} {{ this.year }}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/uploads/{{this.image1Path}}" class="img-responsive img-thumbnail"> </div>
+                
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Location: </td>
+                        <td>{{ this.district }}, {{ this.town}}</td>
+                      </tr>
+                      <tr>
+                        <td>Condition:</td>
+                        <td> {{ this.condition }}</td>
+                      </tr>
+                      <tr>
+                        <td>Fuel Type:</td>
+                        <td>  {{ this.fuelType }}</td>
+                      </tr>
+                      <tr>
+                        <td>Transmissioin Type: </td>
+                        <td> {{ this.transmissioinType }}</td>
+                      </tr>
+                        <tr>
+                        <td>Description:</td>
+                        <td> {{ this.description }}</td>
+                      </tr>
+                      <tr>
+                        <td>Owner:</td>
+                        <td> {{ this.Owner }}</td>
+                      </tr>
+                        <td>Contact No: </td>
+                        <td>{{ this.Contactno }}
+                        </td>
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                 
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                       
+                    </div>
+            
+        {{/each}}
+
+
+          </div>
+        </div>
+      </div>
+    </div>

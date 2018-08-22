@@ -24,6 +24,7 @@ var config = require('./config/database');
 var adminRouter = require('./routes/admin');//
 var users_login = require('./routes/users_login');
 var garageRouter = require('./routes/garage');
+var rentRouter = require('./routes/rent_ads');
 
 var app = express();
 
@@ -77,6 +78,7 @@ app.use('/vehicle_ads',vehicleAdRouter);
 app.use('/admin',adminRouter);
 app.use('/users_login',users_login);
 app.use('/garage',garageRouter);
+app.use('/rent_ads',rentRouter);
 
 
 // catch 404 and forward to error handler

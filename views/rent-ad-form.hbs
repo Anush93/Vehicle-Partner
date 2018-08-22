@@ -1,0 +1,584 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/add.css">
+  <title>{{title}}</title>
+</head>
+<body style="background-color:#F2F3F5">
+
+<div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
+  	<div class="container">
+      <div class="navbar-header"><a class="navbar-brand" href="#">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+        </a>
+      </div>
+        <div class="navbar-collapse">
+           
+			<ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user" style="color: #FFFFFF"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in" style="color: #FFFFFF"></span> Login</a></li>
+      </ul>
+        
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+
+
+<div class="row">
+    
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6" style="background-color:rgb(204, 200, 200);"><br><br>
+        <center><h1>{{title}}</h1></center><br>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" style="background-color:rgb(204, 200, 200);">
+
+  <form name="form" method="POST" action="/rent_ads/rent-data-insert" enctype="multipart/form-data" onSubmit="return validate();">
+    <div class="form-group" >
+    <label for="exampleSelect1">Vehicle Category</label>
+    <select class="form-control" id="VehicleCategory" name="VehicleCategory" required>
+      <option value="">Category</option>
+      <option value="car">Cars</option>
+      <option value="Heavy machine & tractors">Heavy Machinery & Tractors</option>
+      <option value="Motorbikes & Scooters">Motorbikes & Scooters</option>
+      <option value="Three Wheelers">Three Wheelers</option>
+      <option value="Push Cycles">Push Cycles</option>
+      <option value="Vans, Buses & Lorries">Vans, Buses & Lorries</option>
+      
+    </select>
+    </div>
+
+    <div class="form-group">
+    <label for="exampleSelect1">Vehicle Brand</label>
+    <select class="form-control" id="VehicleBrand" name="VehicleBrand" required>
+      <option value="">Brand  </option>
+      <option value="aston-martin">Aston Martin</option>
+      <option value="audi">Audi</option>
+      <option value="austin">Austin</option>
+      <option value="bmw">BMW</option>
+      <option value="buick">Buick</option>
+          <option value="cadillac">Cadillac</option>
+          <option value="changan">Changan</option>
+          <option value="chery">Chery</option>
+          <option value="chevrolet">Chevrolet</option>
+          <option value="chrysler">Chrysler</option>
+          <option value="citroen">Citroën</option>
+          <option value="daewoo">Daewoo</option>
+          <option value="daihatsu">Daihatsu</option>
+          <option value="datsun">Datsun</option>
+          <option value="dodge">Dodge</option>
+          <option value="ferrari">Ferrari</option>
+          <option value="fiat">Fiat</option>
+          <option value="ford">Ford</option>
+          <option value="geely">Geely</option>
+          <option value="gmc">GMC</option>
+          <option value="hino">Hino</option>
+          <option value="honda">Honda</option>
+          <option value="hummer">Hummer</option>
+          <option value="hyundai">Hyundai</option>
+          <option value="isuzu">Isuzu</option>
+          <option value="jaguar">Jaguar</option>
+          <option value="jeep">Jeep</option>
+          <option value="kia">Kia</option>
+          <option value="lamborghini">Lamborghini</option>
+          <option value="land-rover">Land Rover</option>
+          <option value="lexus">Lexus</option>
+          <option value="lincoln">Lincoln</option>
+          <option value="mahindra">Mahindra</option>
+          <option value="maruti">Maruti</option>
+          <option value="mazda">Mazda</option>
+          <option value="mercedes-benz">Mercedes-Benz</option>
+          <option value="mg">MG</option>
+          <option value="micro">Micro</option>
+          <option value="mini">Mini</option>
+          <option value="mitsubishi">Mitsubishi</option>
+          <option value="morris">Morris</option>
+          <option value="moto-guzzi">Moto Guzzi</option>
+          <option value="nissan">Nissan</option>
+          <option value="oldsmobile">Oldsmobile</option>
+          <option value="opel">Opel</option>
+          <option value="perodua">Perodua</option>
+          <option value="peugeot">Peugeot</option>
+          <option value="plymoth">Plymouth</option>
+          <option value="pontiac">Pontiac</option>
+          <option value="porsche">Porsche</option>
+          <option value="proton">Proton</option>
+          <option value="renault">Renault</option>
+          <option value="rover">Rover</option>
+          <option value="royal-enfield">Royal Enfield</option>
+          <option value="saab">SAAB</option>
+          <option value="scion">Scion</option>
+          <option value="seat">SEAT</option>
+          <option value="skoda">Skoda</option>
+          <option value="smart">Smart</option>
+          <option value="ssang-yong">Ssang Yong</option>
+          <option value="subaru">Subaru</option>
+          <option value="suzuki">Suzuki</option>
+          <option value="tata">Tata</option>
+          <option value="toyota">Toyota</option>
+          <option value="vauxhall">Vauxhall</option>
+          <option value="volkswagen">Volkswagen</option>
+          <option value="volvo">Volvo</option>
+          <option value="zoyte">Zotye</option>
+      <option value="other">Other brand</option>
+    </select>
+    </div>
+
+  <div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Vehicle Model</label>
+      <div class="col-10">
+        <input class="form-control" type="text" id="VehicleModel" name="VehicleModel" placeholder="Enter Vehicle model" required>
+      </div>
+  </div>
+
+  <div class="form-group">
+  <label for="exampleSelect1">Fuel Type</label><br>
+    <label class="radio-inline">
+      <input type="radio" name="fuelType" value="diesel" required>Diesel 
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="fuelType" value="petrol" required>Petrol 
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="fuelType" value="cng" required>CNG
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="fuelType" value="otherType" required>Other Type
+    </label>
+</div>
+    <div class="form-group">
+        <label for="example-number-input" class="col-2 col-form-label">Year</label>
+        <div class="col-10">
+        <input class="form-control" type="number" id="year" name="year" placeholder="Enter Year of the Vehcle" onchange="current_year()" required>
+        </div>
+    </div>
+
+<div class="form-group">
+    <label for="exampleSelect1">Transmissioin Type</label>
+    <select class="form-control" id="transmissioinType" name="transmissioinType" required>
+      <option value="">Transmission  </option>
+      <option value="manual">Manual</option>
+      <option value="automatic">Automatic</option>
+      <option value="tiptronic">Tiptronic</option>
+      <option value="other">Other transmission</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleSelect1">District</label>
+    <select class="form-control" id="slct1" name="district" onchange="populate(this.id,'slct2')"required>
+        <option value="Your district">Your district</option>{{!--user district should retrieve --}}
+        <option value="Ampara">Ampara</option>
+        <option value="Anuradhapura">Anuradhapura</option>
+        <option value="Badulla">Badulla</option>
+        <option value="Batticaloa">Batticaloa</option>
+        <option value="Colombo">Colombo</option>
+        <option value="Galle">Galle</option>
+        <option value="Gampaha">Gampaha</option>
+        <option value="Hambantota">Hambantota</option>
+        <option value="Jaffna">Jaffna</option>
+        <option value="Kalutara">Kalutara</option>
+        <option value="Kandy">Kandy</option>
+        <option value="Kegalla">Kegalla</option>
+        <option value="Kilinochchi">Kilinochchi</option>
+        <option value="Kurunegala">Kurunegala</option>
+        <option value="Mannar">Mannar</option>
+        <option value="Matale">Matale</option>
+        <option value="Matara">Matara</option>
+        <option value="Moneragala">Moneragala</option>
+        <option value="Mullaitivu">Mullaitivu</option>
+        <option value="Nuwara Eliya">Nuwara Eliya</option>
+        <option value="Polonnaruwa">Polonnaruwa</option>
+        <option value="Puttalam">Puttalam</option>
+        <option value="Ratnapura">Ratnapura</option>
+        <option value="Trincomalee">Trincomalee</option>
+        <option value="Vavuniya">Vavuniya</option>
+  </select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleSelect1">Town</label>
+    <select class="form-control" id="slct2" name="town" required>
+          <option value="Your town">Your town</option>{{!--user town should retrieve --}}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="description" name="description" rows="6" 
+    placeholder="Please describe the rent price details for days or months " required></textarea>
+  </div>
+  
+
+   <div class="form-group">
+        <label>Upload Image</label>
+        
+        
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Picture 1<input id="pic1" name="upl" type="file" style="display: none;" >
+                    </span>
+                </label>
+                <input type="text" class="form-control" onfocus="this.blur()" class="readonly" required >
+            </div> <br>
+
+           
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Picture 2<input  id="pic2" name="upl1" type="file" style="display: none;" >
+                    </span>
+                </label>
+                <input type="text" class="form-control" onfocus="this.blur()" class="readonly" required>
+            </div><br>
+
+            
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Picture 3<input  id="pic3" name="upl2" type="file" style="display: none;" >
+                    </span>
+                </label>
+                <input type="text" class="form-control" onfocus="this.blur()" class="readonly" required>
+            </div>
+      </div>
+    
+
+  <div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Owner</label>
+      <div class="col-10">
+        <input  class="form-control" type="text" id="owner" value="" name="owner" placeholder="Enter Owner Name" required>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Contact No</label>
+      <div class="col-10">
+        <input class="form-control" maxlength="10" minlength="10" type="number" 
+        onchange="phoneNumber()" value="" id="contactNo" name="contactNo" placeholder="Enter Contact No" required>
+      </div>
+  </div>
+  
+  <button type="reset" class="btn btn-primary">Reset</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  
+            </form><br><br>
+        </div>
+    <div class="col-sm-2"></div>
+</div>
+<div class="col-sm-3"></div>
+</div>
+
+{{!-- Srript for dynamic dropdown menu --}}
+  <script>
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "Ampara"){
+		var optionArray = ["|Select Your Town","Akkarepattu|Akkarepattu","Ampara|Ampara","Kalmunai|Kalmunai",
+    "Sainthamaruthu|Sainthamaruthu","Dehiattakandiya|Dehiattakandiya","Padiyathalawa|Padiyathalawa",
+    "Mahaoya|Mahaoya","Uhana|Uhana","Navithanveli|Navithanveli","Sammanthurai|Sammanthurai"
+    ,"Kalmunai (Tamil)|Kalmunai (Tamil)","Karaitheevu|Karaitheevu","Ninthavur|Ninthavur"
+    ,"Addalaichenai|Addalaichenai","Irakkamam|Irakkamam","Alayadiwembu|Alayadiwembu","Damana|Damana","Thirukkovil|Thirukkovil"
+    ,"Pothuvil|Pothuvil","Lahugala|Lahugala"];
+	} 
+  else if(s1.value == "Anuradhapura"){
+		var optionArray = ["|Select Your Town","Anuradhapura|Anuradhapura","Eppawala|Eppawala","Galenbindunuwewa|Galenbindunuwewa",
+    "Galnewa|Galnewa","Habarana|Habarana","Horowpothana|Horowpothana","Kekirawa|Kekirawa","Medawachchiya|Medawachchiya",
+    "Mihintale|Mihintale","Nochchiyagama|Nochchiyagama","Talawa|Talawa","Ipalogama|Ipalogama","Kahatagasdigiliya|Kahatagasdigiliya"
+    ,"Kebithigollewa|Kebithigollewa","Nachchadoowa|Nachchadoowa","Padaviya|Padaviya","Palagala|Palagala","Palugaswewa|Palugaswewa",
+    "Rajanganaya|Rajanganaya","Rambewa|Rambewa","Thirappane|Thirappane","Tambuttegama|Tambuttegama"];
+	} 
+  else if(s1.value == "Badulla"){
+		var optionArray = ["|Select Your Town","Badulla|Badulla","Bandarawela|Bandarawela","Bandarawela|Bandarawela",
+    "Welimada|Welimada","Mahiyanganaya|Mahiyanganaya","Hali Ela|Hali Ela","Diyatalawa|Diyatalawa","Ella|Ella",
+    "Haputale|Haputale","Passara|Passara","Soranathota|Soranathota","Meegahakivula|Meegahakivula","Kandaketiya|Kandaketiya"
+    ,"Lunugala|Lunugala","Rideemaliyadda|Rideemaliyadda","Haldummulla|Haldummulla"];
+	}
+  else if(s1.value == "Batticaloa"){
+		var optionArray = ["|Select Your Town","Batticaloa|Batticaloa","Eravur Pattu|Eravur Pattu","Eravur Town|Eravur Town","Kattankudy|Kattankudy",
+    "Koralai Pattu|Koralai Pattu","Manmunai|Manmunai","Porativu Pattu|Porativu Pattu"];
+	}
+  else if(s1.value == "Colombo"){
+		var optionArray = ["|Select Your Town","Nugegoda|Nugegoda","Dehiwala|Dehiwala","Piliyandala|Piliyandala",
+    "Maharagama|Maharagama","Kottawa|Kottawa","Angoda|Angoda","Athurugiriya|Athurugiriya","Avissawella|Avissawella",
+    "Battaramulla|Battaramulla","Boralesgamuwa|Boralesgamuwa","Colombo 1|Colombo 1","Colombo 2|Colombo 2",
+    "Colombo 3|Colombo 3","Colombo 4|Colombo 4","Colombo 5|Colombo 5","Colombo 6|Colombo 6","Colombo 7|Colombo 7",
+    "Colombo 8|Colombo 8","Colombo 9|Colombo 9","Colombo 10|Colombo 10","Colombo 11|Colombo 11","Colombo 12|Colombo 12",
+    "Colombo 13|Colombo 13","Colombo 14|Colombo 14","Colombo 15|Colombo 15","Hanwella|Hanwella","Homagama|Homagama",
+    "Kaduwela|Kaduwela","Kesbewa|Kesbewa","Kohuwala|Kohuwala","Kolonnawa|Kolonnawa","Kotte|Kotte",
+    "Malabe|Malabe","Moratuwa|Moratuwa","Mount|Mount","Nawala|Nawala","Padukka|Padukka",
+    "Pannipitiya|Pannipitiya","Rajagiriya|Rajagiriya","Ratmalana|Ratmalana","Talawatugoda|Talawatugoda","Wellampitiya|Wellampitiya"];
+	}
+  else if(s1.value == "Galle"){
+		var optionArray = ["|Select Your Town","Galle|Galle","Ambalangoda|Ambalangoda","Elpitiya|Elpitiya",
+    "Hikkaduwa|Hikkaduwa","Baddegama|Baddegama","Ahangama|Ahangama","Batapola|Batapola","Bentota|Bentota",
+    "Karapitiya|Karapitiya","Akmeemana|Akmeemana","Balapitiya|Balapitiya","Elpitiya|Elpitiya",
+    "Gonapinuwala|Gonapinuwala","Habaraduwa|Habaraduwa","Imaduwa|Imaduwa","Karandeniya|Karandeniya","Nagoda|Nagoda",
+    "Neluwa|Neluwa","Niyagama|Niyagama","Thawalama|Thawalama","Yakkalamulla|Yakkalamulla"];
+	}
+  else if(s1.value == "Gampaha"){
+		var optionArray = ["|Select Your Town","Gampaha|Gampaha","Negombo|Negombo","Kelaniya|Kelaniya",
+    "Kiribathgoda|Kiribathgoda","Kadawatha|Kadawatha","Delgoda|Delgoda","Divulapitiya|Divulapitiya","Ganemulla|Ganemulla",
+    "Ja-Ela|Ja-Ela","Kandana|Kandana","Katunayake|Katunayake","Minuwangoda|Minuwangoda","Mirigama|Mirigama"
+    ,"Nittambuwa|Nittambuwa","Ragama|Ragama","Veyangoda|Veyangoda","Wattala|Wattala","Dompe|Dompe",
+    "Mahara|Mahara"];
+	}
+  else if(s1.value == "Hambantota"){
+		var optionArray = ["|Select Your Town","Hambantota|Hambantota","Tangalla|Tangalla","Beliatta|Beliatta","Ambalantota|Ambalantota",
+    "Tissamaharama|Tissamaharama","Ambalantota|Ambalantota","Angunakolapelessa|Angunakolapelessa","Katuwana|Katuwana",
+    "Lunugamvehera|Lunugamvehera","Okewela|Okewela","Sooriyawewa|Sooriyawewa","Walasmulla|Walasmulla","Weeraketiya|Weeraketiya"];
+	}
+  else if(s1.value == "Jaffna"){
+		var optionArray = ["|Select Your Town","Jaffna|Jaffna","Nallur|Nallur","Chavakachcheri|Chavakachcheri",
+    "Delft|Delft","Karainagar|Karainagar","Maruthnkerny|Maruthnkerny","Point Pedro|Point Pedro","Karaveddy|Karaveddy",
+    "Kopay|Kopay","Tellippalai|Tellippalai","Uduvil|Uduvil","Sandilipay|Sandilipay","Chankanai|Chankanai"];
+	}
+  else if(s1.value == "Kalutara"){
+		var optionArray = ["|Select Your Town","Kalutara|Kalutara","Horana|Horana","Panadura|Panadura",
+    "Bandaragama|Bandaragama","Matugama|Matugama","Alutgama|Alutgama","Beruwala|Beruwala","Ingiriya|Ingiriya",
+    "Wadduwa|Wadduwa","Agalawatta|Agalawatta","Bulathsinhala|Bulathsinhala","Dodangoda|Dodangoda","Madurawela|Madurawela"
+    ,"Millaniya|Millaniya","Palindanuwara|Palindanuwara","Walallavita|Walallavita"];
+	}
+  else if(s1.value == "Kandy"){
+		var optionArray = ["|Select Your Town","Kandy|Kandy","Katugastota|Katugastota","Peradeniya|Peradeniya",
+    "Gampola|Gampola","Kundasale|Kundasale","Akurana|Akurana","Ampitiya|Ampitiya","Digana|Digana",
+    "Galagedara|Galagedara","Gelioya|Gelioya","Kadugannawa|Kadugannawa","Madawala Bazaar|Madawala Bazaar","Nawalapitiya|Nawalapitiya"
+    ,"Pilimatalawa|Pilimatalawa","Wattegama|Wattegama","Harispattuwa|Harispattuwa","Panvila|Panvila","Minipe|Minipe",
+    "Delthota|Delthota","Hatharaliyadda|Hatharaliyadda","Thumpane|Thumpane","Minipe|Minipe"];
+	}
+  else if(s1.value == "Kegalla"){
+		var optionArray = ["|Select Your Town","Kegalle|Kegalle","Mawanella|Mawanella","Warakapola|Warakapola",
+    "Rambukkana|Rambukkana","Ruwanwella|Ruwanwella","Dehiowita|Dehiowita","Deraniyagala|Deraniyagala","Galigamuwa|Galigamuwa",
+    "Kitulgala|Kitulgala","Yatiyantota|Yatiyantota","Aranayaka|Aranayaka","Bulathkohupitiya|Bulathkohupitiya"];
+	}
+  else if(s1.value == "Kilinochchi"){
+		var optionArray = ["|Select Your Town","Kilinochchi|Kilinochchi","Kandavalai|Kandavalai","Karachchi|Karachchi",
+    "Pachchilaipalli|Pachchilaipalli","Poonakary|Poonakary"];
+	}
+  else if(s1.value == "Kurunegala"){
+		var optionArray = ["|Select Your Town","Kurunegala|Kurunegala","Kuliyapitiya|Kuliyapitiya","Pannala|Pannala",
+    "Pannala|Pannala","Narammala|Narammala","Wariyapola|Wariyapola","Alawwa|Alawwa","Bingiriya|Bingiriya",
+    "Galgamuwa|Galgamuwa","Giriulla|Giriulla","Hettipola|Hettipola","Ibbagamuwa|Ibbagamuwa","Mawathagama|Mawathagama"
+    ,"Nikaweratiya|Nikaweratiya","Polgahawela|Polgahawela","Ambanpola|Ambanpola","Bamunakotuwa|Bamunakotuwa","Ganewatta|Ganewatta",
+    "Kobeigane|Kobeigane","Giribawa|Giribawa","Polpithigama|Polpithigama","Weerambugedara|Weerambugedara"];
+	}
+  else if(s1.value == "Mannar"){
+		var optionArray = ["|Select Your Town","Mannar|Mannar","Madhu|Madhu","Manthai|Manthai","Musalai|Musalai",
+    "Nanaddan|Nanaddan"];
+	}
+  else if(s1.value == "Matale"){
+		var optionArray = ["|Select Your Town","Matale|Matale","Dambulla|Dambulla","Galewela|Galewela",
+    "Pallepola|Pallepola","Sigiriya|Sigiriya","Yatawatta|Yatawatta","Rattota|Rattota","Naula|Naula",
+    "Ukuwela|Ukuwela","Wilgamuwa|Wilgamuwa","Palapathwela|Palapathwela"];
+	}
+  else if(s1.value == "Matara"){
+		var optionArray = ["|Select Your Town","Matara|Matara","Akuressa|Akuressa","Weligama|Weligama",
+    "Hakmana|Hakmana","Dikwella|Dikwella","Devinuwara|Devinuwara","Athuraliya|Athuraliya","Kamburupitiya|Kamburupitiya",
+    "Kotapola|Kotapola","Malimbada|Malimbada","Pasgoda|Pasgoda","Pitabeddara|Pitabeddara","Thihagoda|Thihagoda"
+    ,"Welipitiya|Welipitiya"];
+	}
+  else if(s1.value == "Moneragala"){
+		var optionArray = ["|Select Your Town","Moneragala|Moneragala","Bibile|Bibile","Kataragama|Kataragama",
+    "Wellawaya|Wellawaya","Buttala|Buttala","Bibile|Bibile","Badalkumbura|Badalkumbura","Katharagama|Katharagama",
+    "Madulla|Madulla","Medagama|Medagama","Sevanagala|Sevanagala","Siyambalanduwa|Siyambalanduwa","Thanamalvila|Thanamalvila"
+    ,"Wellawaya|Wellawaya"];
+	}
+  else if(s1.value == "Mullaitivu"){
+		var optionArray = ["|Select Your Town","Mullaitivu|Mullaitivu","Pandiyankulam|Pandiyankulam","Maritimepattu|Maritimepattu",
+    "Oddusuddan|Oddusuddan","Puthukudiyiruppu|Puthukudiyiruppu","Thunukkai|Thunukkai","Welioya|Welioya"];
+	}
+  else if(s1.value == "Nuwara Eliya"){
+		var optionArray = ["|Select Your Town","Nuwara Eliya|Nuwara Eliya","Hatton|Hatton","Ginigathena|Ginigathena",
+    "Madulla|Madulla","Walapane|Walapane","Hanguranketha|Hanguranketha","Ambagamuwa|Ambagamuwa"];
+	}
+  else if(s1.value == "Polonnaruwa"){
+		var optionArray = ["|Select Your Town","Polonnaruwa|Polonnaruwa","Kaduruwela|Kaduruwela","Hingurakgoda|Hingurakgoda",
+    "Medirigiriya|Medirigiriya","Dimbulagala|Dimbulagala","Elahera|Elahera","Lankapura|Lankapura","Thamankaduwa|Thamankaduwa",
+    "Welikanda|Welikanda"];
+	}
+  else if(s1.value == "Puttalam"){
+		var optionArray = ["|Select Your Town","Puttalam|Puttalam","Pallama|Pallama","Chilaw|Chilaw","Wennappuwa|Wennappuwa",
+    "Dankotuwa|Dankotuwa","Nattandiya|Nattandiya","Marawila|Marawila","Anamaduwa|Anamaduwa","Arachchikattuwa|Arachchikattuwa",
+    "Kalpitiya|Kalpitiya","Madampe|Madampe","Mahakumbukkadawala|Mahakumbukkadawala","Mahawewa|Mahawewa","Mundalama|Mundalama"
+    ,"Nawagattegama|Nawagattegama","Pallama|Pallama","Vanathavilluwa|Vanathavilluwa"];
+	}
+  else if(s1.value == "Ratnapura"){
+		var optionArray = ["|Select Your Town","Ratnapura|Ratnapura","Embilipitiya|Embilipitiya","Balangoda|Balangoda",
+    "Pelmadulla|Pelmadulla","Eheliyagoda|Eheliyagoda","Kuruwita|Kuruwita","Ayagama|Ayagama","Elapattha|Elapattha",
+    "Godakawela|Godakawela","Imbulpe|Imbulpe","Kahawatta|Kahawatta","Kalawana|Kalawana","Kiriella|Kiriella"
+    ,"Kolonna|Kolonna","Nivithigala|Nivithigala","Opanayaka|Opanayaka","Weligepola|Weligepola"];
+	}
+  else if(s1.value == "Trincomalee"){
+		var optionArray = ["|Select Your Town","Trincomalee|Trincomalee","Gomarankadawala|Gomarankadawala","Kantalai|Kantalai",
+    "Kinniya|Kinniya","Kuchchaveli|Kuchchaveli","Morawewa|Morawewa","Muttur|Muttur","Padavi Sri Pura|Padavi Sri Pura",
+    "Seruvila|Seruvila","Thambalagamuwa|Thambalagamuwa","Verugal (Echchilampattai)|Verugal (Echchilampattai)"];
+	}
+  else if(s1.value == "Vavuniya"){
+		var optionArray = ["|Select Your Town","Vavuniya|Vavuniya","Vengalacheddikulam|Vengalacheddikulam"];
+	}
+
+  
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+</script>
+
+{{!-- for image upload --}}
+<script>
+  $(function() {
+
+  // We can attach the `fileselect` event to all file inputs on the page
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  // We can watch for our custom `fileselect` event like this
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
+  
+});
+</script>
+
+{{!-- for image upload validation --}}
+<script>
+    function validate()
+{
+var extensions = new Array("jpg","jpeg","png");
+
+var image_file = document.form.upl.value;
+
+var image_length = document.form.upl.value.length;
+
+var pos = image_file.lastIndexOf('.') + 1;
+
+var ext = image_file.substring(pos, image_length);
+
+var final_ext = ext.toLowerCase();
+
+for (i = 0; i < extensions.length; i++)
+{
+    if(extensions[i] == final_ext)
+    {
+    return true;
+    }
+}
+
+alert("You must upload an image file with one of the following extensions: "+ extensions.join(', ') +".");
+return false;
+}
+</script>
+{{!-- for image upload validation --}}
+<script>
+   function validate()
+{
+var extensions = new Array("jpg","jpeg","png");
+
+var image_file = document.form.upl1.value;
+
+var image_length = document.form.upl1.value.length;
+
+var pos = image_file.lastIndexOf('.') + 1;
+
+var ext = image_file.substring(pos, image_length);
+
+var final_ext = ext.toLowerCase();
+
+for (i = 0; i < extensions.length; i++)
+{
+    if(extensions[i] == final_ext)
+    {
+    return true;
+    }
+}
+
+alert("You must upload an image file with one of the following extensions: "+ extensions.join(', ') +".");
+return false;
+}
+</script>
+{{!-- for image upload validation --}}
+<script>
+   function validate()
+{
+var extensions = new Array("jpg","jpeg","png");
+
+var image_file = document.form.upl2.value;
+
+var image_length = document.form.upl2.value.length;
+
+var pos = image_file.lastIndexOf('.') + 1;
+
+var ext = image_file.substring(pos, image_length);
+
+var final_ext = ext.toLowerCase();
+
+for (i = 0; i < extensions.length; i++)
+{
+    if(extensions[i] == final_ext)
+    {
+    return true;
+    }
+}
+
+alert("You must upload an image file with one of the following extensions: "+ extensions.join(', ') +".");
+return false;
+}
+</script>
+
+
+<script>
+  function current_year() {
+    var userYear = document.getElementById("year").value;
+    var d = new Date();
+    var currentYear = d.getFullYear();
+
+    if (userYear>currentYear) {
+          alert("The Year must be less or equal to current year");
+          return false;
+     }
+    return true;
+}
+</script>
+
+<script>
+  function phoneNumber(){
+    
+    var inputtxt = document.getElementById("contactNo").value;
+    var phoneno = /^\d{10}$/;
+    if (!inputtxt.match(phoneno)) {
+          alert("The Contacct no must have 10 digits");
+          return false;
+     }
+    return true;
+  }
+</script>
