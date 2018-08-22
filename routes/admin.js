@@ -77,7 +77,6 @@ router.get('/confirm_garage/:id', function(req, res, next) {
     });
   });
 
-<<<<<<< HEAD
 //to view all pending garages
 router.get('/pending_garages', function(req, res, next) {
   Garage.find({isLive:0}).
@@ -93,15 +92,13 @@ router.get('/delete_garage/:id', function(req, res, next) {
   res.render('pending-garages', { title: 'Pending Garages', items: doc }); 
 });
 ///////////////////////////////////////////////////////////////
-=======
+
 //delete all add
 router.get('/deleteVehicleAd/:id', function(req, res, next) {
   var id = req.params.id;
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.render('admin_allads', { title: 'All Vehicle Ads' }); 
 });
-
->>>>>>> master
 
 router.post('/sendSMS', function(req, res, next){
   var sms =req.body.sms;
