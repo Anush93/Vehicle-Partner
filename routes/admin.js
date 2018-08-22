@@ -101,7 +101,13 @@ router.get('/delete_vehicle_ad/:id', function(req, res, next) {
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
 });
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//delete all add
+router.get('/deleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.redirect('/admin/all_Ads'); 
+}); 
 //confirmation of garages
 router.get('/confirm_garage/:id/:contactno', function(req, res, next) {
   var id=req.params.id;
@@ -111,6 +117,7 @@ router.get('/confirm_garage/:id/:contactno', function(req, res, next) {
 
   Garage.findById(id, function (err,garage_ad) {
 
+<<<<<<< HEAD
     nexmo.message.sendSms(from, to, text, (error, response) => {
       if(error) {
         throw error;
@@ -137,6 +144,12 @@ router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.redirect('/admin/all_Ads'); 
 }); */
+=======
+
+
+
+
+>>>>>>> master
 
     garage_ad.set({isLive:1});
     garage_ad.save(function (err, updatedAd) {
@@ -145,6 +158,13 @@ router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
       res.redirect('/admin/pending_rent_ads');   
       });
     });
+  });
+
+
+  router.get('/deleteUser/:id', function(req, res, next) {
+    var id = req.params.id;
+    userData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+    res.redirect('/admin'); 
   });
 
 //to view all pending garages
@@ -162,7 +182,10 @@ router.get('/delete_garage/:id', function(req, res, next) {
   res.render('pending-garages', { title: 'Pending Garages', items: doc }); 
 });
 ///////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 //delete all add
 // router.get('/deleteVehicleAd/:id', function(req, res, next) {
