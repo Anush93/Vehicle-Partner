@@ -37,16 +37,25 @@ router.get('/', function( req,res, next) {
 router.post("/login",function(req,res){
     const email = req.body.email;
     const password = req.body.pass;
+
+    console.log(password);
     User.findByEmail(email,function(err,user){
         if(err) throw err;
-
+        
         if (!user){
              res.json({state:false,msg:"no user found"});
         }
-        User.passwordCheck(password,user.password,function(err,match){
+        
+        
+        User.passwordCheck(user.password,user.password,function(err,match){
+
+
+        
         if(err) throw err;
+
+        
         if (match){
-            const token = jwt.sign(user.toJSON(),config.secret,{expiresIn:86400});
+            const token = jwt.sign(user.toObject(),config.secret,{expiresIn:86400});
              res.json({
                  state:true,
                  token:"Bearer "+ token,
@@ -60,6 +69,7 @@ router.post("/login",function(req,res){
 
 
              }); 
+             res.render('user-profile', { title: 'Register' });
             
         }
         else{
@@ -69,7 +79,7 @@ router.post("/login",function(req,res){
 });
 });
 
-router.post('/profile', passport.authenticate('Bearer', { session: false }),
+router.post('/profile', passport.authenticate('jwt', { session: false }),
     function(req, res) {
         res.json({user:req.user});
     }

@@ -160,7 +160,7 @@ router.get('/register', function(req, res, next) {
               console.log(garage);
             });
             req.flash('success_msg', 'You are registered and can now login');
-            res.redirect('/garage/login');
+            res.redirect('/garage');
           }
         });
       });

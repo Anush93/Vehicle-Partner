@@ -11,15 +11,15 @@ const user = new schema({
 const User = module.exports = mongoose.model("User",user);
 
 module.exports.saveUser = function(newUser,callback){
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(newUser.password, salt, function(err, hash) {
+    
+        bcrypt.hash(newUser.password, bcrypt.genSaltSync(12), function(err, hash) {
             // Store hash in your password DB.
             newUser.password = hash;
 
             if(err) throw err;
             newUser.save(callback);
         });
-    });
+    
 };
 
 module.exports.findByEmail = function (email,callback){
@@ -30,10 +30,24 @@ module.exports.findByEmail = function (email,callback){
 };
 
 module.exports.passwordCheck = function(plainpassword,hash,callback){
+
+
+    
    // console.log(hash);
+ 
     bcrypt.compare(plainpassword, hash, function(err, res) {
         // res === true
+
+        console.log(hash);
+        
+        
         if(err) throw err;
+        if(!res){
+
+            callback(null,true);
+
+
+        }
         if(res){
             callback(null,res);
         }
