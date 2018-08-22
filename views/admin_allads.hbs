@@ -7,10 +7,10 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/add.css">
 <!------ Include the above in your HEAD tag ---------->
-
-<div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
+<body style="background-color:#F2F3F5">
+	<div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
   	<div class="container">
-      <div class="navbar-header"><a class="navbar-brand" href="#">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <div class="navbar-header"><a class="navbar-brand" href="/">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="glyphicon glyphicon-bar"></span>
           <span class="glyphicon glyphicon-bar"></span>
           <span class="glyphicon glyphicon-bar"></span>
@@ -19,17 +19,17 @@
         <div class="navbar-collapse">
            
 			<ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user" style="color: #FFFFFF"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in" style="color: #FFFFFF"></span> Login</a></li>
+        
+        <li><a href="/"><span class="glyphicon glyphicon-log-in" style="color: #FFFFFF"></span> LogOut</a></li>
       </ul>
         
         </div>
         <!--/.navbar-collapse -->
     </div>
-</div> 	
+</div> 	<div class="container-fluid main-container" style="background-color:#F2F3F5" >
 	
 	
-	<div class="container-fluid main-container">
+	
 
 
 
@@ -58,9 +58,9 @@
 						<div id="dropdown-lvl1" class="panel-collapse collapse">
 							<div class="panel-body">
 								<ul class="nav navbar-nav">
-									<li><a href="#">All Pending Ads of Vehicle Category</a></li>
+									<li><a href="/admin/pending_vehicle_ads">All Pending Ads of Vehicle Category</a></li>
 									<li><a href="#">All Pending Ads of Spareparts Category</a></li>
-									<li><a href="#">All Pending Ads of Vehicle Rent Category</a></li>
+									<li><a href="/admin/pending_rent_ads">All Pending Ads of Vehicle Rent Category</a></li>
 
 
 								
@@ -82,7 +82,7 @@
 						<div id="dropdown-lvl2" class="panel-collapse collapse">
 							<div class="panel-body">
 								<ul class="nav navbar-nav">
-									<li><a href="#">All Ads of Vehicle Category</a></li>
+									<li><a href="/admin/all_Ads">All Ads of Vehicle Category</a></li>
 									<li><a href="#">All Ads of Spareparts Category</a></li>
 									<li><a href="#">All Ads of Vehicle Rent Category</a></li>
 
@@ -96,6 +96,27 @@
 
 					<li><a href="/admin/"><span class="glyphicon glyphicon-user"></span> Users</a></li>
 
+						<li class="panel panel-default" id="dropdown">
+						<a data-toggle="collapse" href="#dropdown-lvl3">
+							<span class="glyphicon glyphicon-wrench"></span> Garage <span class="caret"></span>
+						</a>
+
+						<!-- Dropdown level 1 -->
+						<div id="dropdown-lvl3" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul class="nav navbar-nav">
+									<li><a href="/admin/pending_garages">Pending Garages</a></li>
+									<li><a href="#">All Garages</a></li>
+				
+
+
+								
+									
+								</ul>
+							</div>
+						</div>
+					</li>
+
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
@@ -104,24 +125,31 @@
 </div>  		</div>
   		<div class="col-md-10 content">
   			  <div class="panel panel-default">
+						<div class="panel-heading">
+		Pending Vehicle Ads
+	</div>
 	
 	
 		
+<div class="panel-body" style="background-color:#EAEBEF;">
+ <div class="col-md-9">
 
-
-        <div class="col-md-6">
+        <div class="col-md-8">
  
 
 {{#each items }}
 <div class="container" >
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6" >
+        <div class="col-xs-12 col-sm-6 col-md-9" style="margin-right: 50px; margin-left: auto;">
             <div class="well well-sm" style="background-color:#ffffff;" >
                 <div class="row" >
-                    <div class="col-sm-6 col-md-4">
+                    <div class="col-sm-6 col-md-6">
                         <img src="/uploads/{{this.image1Path}}" alt="" class="img-rounded img-responsive" />
                     </div>
-                    <div class="col-sm-6 col-md-8">
+					<div class="col-sm-6 col-md-0">
+            
+                    </div>
+                    <div class="col-sm-6 col-md-6">
                         <h4> {{ this.VehicleBrand }} {{ this.VehicleModel }} {{ this.year }}</h4>
                         <small><cite title="San Francisco, USA">Location: {{ this.district }}, {{ this.town}} <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>
@@ -155,15 +183,13 @@
   {{/each}}   
         </div>
 
+		 </div>
+</div>
+
 
 
   		</div>
-  		<footer class="pull-left footer">
-  			<p class="col-md-12">
-  				<hr class="divider">
-  				Copyright &COPY; 2018 <a>VehiclePartner.lk</a>
-  			</p>
-  		</footer>
+  		
   	</div>
 
 <script>

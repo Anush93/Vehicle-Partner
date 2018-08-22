@@ -81,7 +81,7 @@ router.post('/rent-data-insert',upload.any(),function(req, res, next) {
 
   var data = new rentAdData(item);//data is our model of collection to which we passed item objct
   data.save();//jst save dat objct man;
-  res.redirect('/');
+  res.redirect('/users/userProfile');
 }
 });
 
