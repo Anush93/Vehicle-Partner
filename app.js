@@ -25,6 +25,7 @@ var adminRouter = require('./routes/admin');//
 var users_login = require('./routes/users_login');
 var garageRouter = require('./routes/garage');
 var rentRouter = require('./routes/rent_ads');
+var spare_partRouter = require('./routes/spare_part');
 
 var app = express();
 
@@ -79,6 +80,7 @@ app.use('/admin',adminRouter);
 app.use('/users_login',users_login);
 app.use('/garage',garageRouter);
 app.use('/rent_ads',rentRouter);
+app.use('/spare_part',spare_partRouter);
 
 
 // catch 404 and forward to error handler

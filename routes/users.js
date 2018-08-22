@@ -40,10 +40,6 @@ router.get('/vehicle_ad_form', function(req, res, next) {
     res.render('register', { title: 'Register' });
   });
 
-  router.get('/garage_ad_form', function(req, res, next) {
-    res.render('garage-ad-form', { title: 'Fill Your Garage Advertisment Details' });
-  });
-
   router.get('/spare_part_ad_form', function(req, res, next) {
     res.render('spare-part-ad-form', { title: 'Fill Your Spare Part Advertisment Details' });
   });
