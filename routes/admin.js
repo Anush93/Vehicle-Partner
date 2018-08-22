@@ -10,7 +10,8 @@ var multer = require('multer');
 const nodemailer = require('nodemailer');
 const xoauth2 = require('xoauth2');
 var AdData=require('../models/vehicle_ad.model');
-var userData =require('../models/user')
+var userData =require('../models/user');
+var Garage=require('../models/garage.model');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -27,7 +28,7 @@ router.get('/allAds', function(req, res, next) {
   res.render('admin_allAds', { title: 'allAds' });
 });
 
-//admin confirmation of vehicle ad
+//admin confirmation of vehicle ad///////////////////////////////
 
 router.get('/confirm_vehicle_ad/:id', function(req, res, next) {
   var id=req.params.id;
@@ -56,7 +57,36 @@ router.get('/delete_vehicle_ad/:id', function(req, res, next) {
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.render('admin_home', { title: 'Welcome admin' }); 
 });
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//confirmation of garages
+router.get('/confirm_garage/:id', function(req, res, next) {
+  var id=req.params.id;
+  Garage.findById(id, function (err,garage_ad) {
 
+    garage_ad.set({isLive:1});
+    garage_ad.save(function (err, updatedAd) {
+      if (err) return handleError(err);
+      console.log(updatedAd);
+      res.redirect('/admin/pending_garages');   
+      });
+    });
+  });
+
+//to view all pending garages
+router.get('/pending_garages', function(req, res, next) {
+  Garage.find({isLive:0}).
+  then(function(doc){
+    res.render('pending-garages', { title: 'Pending Garages', items: doc });
+  });
+});
+
+//delete garages from admin view
+router.get('/delete_garage/:id', function(req, res, next) {
+  var id = req.params.id;
+  Garage.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.render('pending-garages', { title: 'Pending Garages', items: doc }); 
+});
+///////////////////////////////////////////////////////////////
 
 router.post('/sendSMS', function(req, res, next){
   var sms =req.body.sms;

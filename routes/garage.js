@@ -18,8 +18,54 @@ var LocalStrategy = require('passport-local').Strategy;
 /* GET home page. */
 // to get all garage ads
 router.get('/', function(req, res, next) {
-  res.render('garage-all', { title: 'All garages' });
+  Garage.find({isLive:1}).
+  
+  then(function(doc){
+    res.render('garage-all', { title: 'All garages',items: doc });
+  });
 });
+
+router.get('/search', function(req, res) {
+
+  var District=req.query.district;
+  var Town=req.query.town;
+  var ServiceTypes=req.query.servicetype;
+
+  Garage.find({$or:[{district:District},
+    {town:Town},
+    {ServiceTypes:ServiceTypes}]}, 
+    function (err, docs) {
+    console.log(docs);
+    res.render('garage-all', { title: 'Searched Garage Details',items: docs });
+  });
+  //console.log(req.query);
+
+
+  // AdData.find({district:District/*,town:Town,VehicleBrand:Brand,VehicleModel:Model*/}).
+  // then(function(docs){
+    
+  //   res.render('vehicle-ads-all', { title: 'Searched Ad Details',items: docs });
+  //   console.log(docs);
+  // });
+});
+
+router.get('/clicked/:id', function(req, res, next) {
+  var id=req.params.id;
+  Garage.find({ _id: id}).
+  then(function(doc){
+    res.render('garage-prof-view', { title: 'Garage Details',items: doc });
+  });
+});
+
+
+function ensureAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  } else {
+    req.flash('error_msg','You are not logged in');
+    res.redirect('/garage/login');
+  }
+}
 
 //image stuff
 var upload = multer({storage: multer.diskStorage({
@@ -66,6 +112,7 @@ router.get('/register', function(req, res, next) {
     var image1Path=req.files[0].filename;
     var image2Path=req.files[1].filename;
     var image3Path=req.files[2].filename;
+    var contactno = req.body.contactno;
   
     // Validation
     req.checkBody('garagename', 'Garagename is required').notEmpty();
@@ -84,16 +131,12 @@ router.get('/register', function(req, res, next) {
     }
     else {
       //checking for email and username are already taken
-      Garage.findOne({ garagename: { 
-        "$regex": "^" + garagename + "\\b", "$options": "i"
-    }}, function (err, garage) {
-      Garage.findOne({ email: { 
-          "$regex": "^" + email + "\\b", "$options": "i"
-      }}, function (err, mail) {
+      Garage.findOne({ garagename: { "$regex": "^" + garagename + "\\b", "$options": "i"}},
+      function (err, garage) {
+        Garage.findOne({ email: { "$regex": "^" + email + "\\b", "$options": "i"}}, 
+        function (err, mail) {
           if (garage || mail) {
-            res.render('register',{ 
-              garage: garage,
-              mail:mail });
+            res.render('garage-register',{ garage: garage,mail:mail });
           }
           else {
             var newGarage = new Garage({
@@ -108,7 +151,8 @@ router.get('/register', function(req, res, next) {
               description:description,
               image1Path:image1Path,
               image2Path:image2Path,
-              image3Path:image3Path
+              image3Path:image3Path,
+              contactno:contactno
 
             });
             Garage.createUser(newGarage, function (err, garage) {
@@ -136,11 +180,11 @@ router.get('/register', function(req, res, next) {
     function (garagename, password, done) {
       Garage.getUserByUsername(garagename, function (err, garage) {
         if (err) {
-          console.log(err);
+          //console.log(err);
           throw err;
           }
         if (!garage) {
-          console.log("Unknown garage");
+          //console.log("Unknown garage");
           return done(null, false, { message: 'Unknown Garage' });
         }
   
@@ -171,6 +215,9 @@ router.get('/register', function(req, res, next) {
   router.post('/login',
     passport.authenticate('local', { successRedirect: '/garage/profile', failureRedirect: '/garage/login'}),
     function (req, res) {
+      //  var garagename = req.body.garagename;
+      //  var password= req.body.password;
+      //  console.log(req.body);
       res.redirect('/garage/profile');
     });
   
@@ -178,14 +225,6 @@ router.get('/register', function(req, res, next) {
       res.render('garage-profile');
     });
     
-    function ensureAuthenticated(req, res, next){
-      if(req.isAuthenticated()){
-        return next();
-      } else {
-        req.flash('error_msg','You are not logged in');
-        res.redirect('/garage/login');
-      }
-    }
 
   router.get('/logout', function (req, res) {
     req.logout();

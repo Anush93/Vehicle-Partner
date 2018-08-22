@@ -14,14 +14,16 @@ var GarageSchema = new Schema({
     password:{type:String,required:true},
     Longitude:{type:String,required:true},
     Latitude:{type:String,required:true},
-    ServiceTypes:[String],
+    ServiceTypes:{type:[String],default:""},
     district:{type:String,required:true},
     town:{type:String,required:true},
     description:{type:String,required:true},
     ////////////////////////image
       image1Path:{type:String,required:true},
       image2Path:{type:String,required:true},
-      image3Path:{type:String,required:true}
+      isLive:{type:Number,default:0},
+      image3Path:{type:String,required:true},
+      contactno:{type:Number,required:true}
     //added_date:{type: Date,default: Date.now}
   },{collection:'garage-data'});
 
