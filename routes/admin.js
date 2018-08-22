@@ -94,11 +94,11 @@ router.get('/delete_garage/:id', function(req, res, next) {
 ///////////////////////////////////////////////////////////////
 
 //delete all add
-router.get('/deleteVehicleAd/:id', function(req, res, next) {
-  var id = req.params.id;
-  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
-  res.render('admin_allads', { title: 'All Vehicle Ads' }); 
-});
+// router.get('/deleteVehicleAd/:id', function(req, res, next) {
+//   var id = req.params.id;
+//   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+//   res.render('admin_allads', { title: 'All Vehicle Ads' }); 
+// });
 
 router.post('/sendSMS', function(req, res, next){
   var sms =req.body.sms;
