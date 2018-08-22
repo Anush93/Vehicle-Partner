@@ -7,11 +7,14 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var indexRouter = require('./routes/index');
 var hbs = require('express-handlebars');//to import handle bars
-var expressValdator = require('express-validator');
+//var expressValdator = require('express-validator');
 var expressSession = require('express-session');
 var multer = require('multer');
 var expressValidator = require('express-validator');
 var flash = require('connect-flash');
+var LocalStrategy = require('passport-local').Strategy;
+// var mongo = require('mongodb');
+// var mongoose = require('mongoose');
 
 
 
@@ -32,7 +35,7 @@ app.set('view engine', 'hbs');//set the hbs as template engine
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(expressValdator());//should be used after the body parser
+app.use(expressValidator());//should be used after the body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

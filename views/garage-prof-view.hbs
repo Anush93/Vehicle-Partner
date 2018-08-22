@@ -1,0 +1,30 @@
+
+{{!-- <img src="/uploads/{{imgPath}}" class="img-rounded" alt="not loaded"> --}}
+<link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>{{title}}</title>
+</head>
+<body>
+<h1>{{title}}</h1>
+
+    {{#each items }}
+        <pre>
+            Name: {{ this.garagename }}
+            Service Types: {{ this.ServiceTypes }}
+            Location: {{ this.district }}, {{ this.town}}
+            Description: {{ this.description }}
+            Contact No: {{ this.contactno }}          
+            <img src="/uploads/{{this.image1Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 25%;min-height: 25%;align:left;">   <img src="/uploads/{{this.image2Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 25%;min-height: 25%;align:left;">   <img src="/uploads/{{this.image3Path}}" class="img-rounded" alt="not loaded" 
+            style="width: 25%;min-height: 25%;align:left;">    
+        </pre>
+        {{/each}}
+    </div>
