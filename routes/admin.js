@@ -108,6 +108,21 @@ router.get('/deleteVehicleAd/:id', function(req, res, next) {
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.redirect('/admin/all_Ads'); 
 }); 
+
+//view to admin published rent ads
+router.get('/adminPubRentAds', function(req, res, next) {
+  rentAdData.find({isLive:1}).
+  then(function(doc){
+    res.render('admin_all_rentAds', { title: 'All rent adds',items: doc });
+  });
+});
+
+//delete published renting ads
+router.get('/deleteRentAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  rentAdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.redirect('/admin/adminPubRentAds'); 
+}); 
 //confirmation of garages
 router.get('/confirm_garage/:id/:contactno', function(req, res, next) {
   var id=req.params.id;
