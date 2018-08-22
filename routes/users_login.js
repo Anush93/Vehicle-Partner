@@ -39,6 +39,8 @@ router.post("/login",function(req,res){
     const password = req.body.pass;
 
     console.log(password);
+
+   
     User.findByEmail(email,function(err,user){
         if(err) throw err;
         

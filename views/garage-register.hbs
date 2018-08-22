@@ -1,6 +1,22 @@
 
 {{!-- <img src="/uploads/{{imgPath}}" class="img-rounded" alt="not loaded"> --}}
 <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/add.css">
+
+
+
+
+
+
+<link rel="stylesheet" href="/stylesheets/style.css">
  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -13,8 +29,8 @@
 {{!-- map and stuff --}}
 <style>
 #myMap {
-   height: 350px;
-   width: 680px;
+   height: 250px;
+   width: 400px;
 }
 </style>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyB1hVEO6yyjaayhluLjqBG9tyA1jv1iPf8"></script>
@@ -22,19 +38,69 @@
  <title>{{title}}</title>
 </head>
 <body>
-<h1>{{title}}</h1>
 
-{{#if user}}
-        <div class="alert alert-danger">Username has taken already try new</div> 
-{{/if}}
-{{#if mail}}
-        <div class="alert alert-danger">Email has taken already try new</div> 
-{{/if}} 
-{{#if errors}}
-      {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-      {{/each}}
-{{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body style="background-color:#F2F3F5">
+
+<div class="navbar navbar-fixed-top navbar-default " style="background-color:#0B0B61">
+  	<div class="container">
+      <div class="navbar-header"><a class="navbar-brand" href="#">VehiclePartner.lk</a><a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+          <span class="glyphicon glyphicon-bar"></span>
+        </a>
+      </div>
+        <div class="navbar-collapse">
+           
+			<ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user" style="color: #FFFFFF"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in" style="color: #FFFFFF"></span> Login</a></li>
+      </ul>
+        
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+
+
+
+<div class="row">
+    
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8" style="background-color:rgb(204, 200, 200);padding: 10px;"><br><br>
+        <center><h1>{{title}}</h1></center><br>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" style="background-color:rgb(204, 200, 200);">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <form name="form" method="POST" action="/garage/register" enctype="multipart/form-data" onSubmit="return validate();">
   <div class="form-group">
     <label for="example-text-input" class="col-2 col-form-label" >Garage Name</label>   
@@ -157,6 +223,27 @@
    <button type="reset" class="btn btn-primary">Reset</button>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+
+
+
+
+
+   </div>
+    <div class="col-sm-2"></div>
+</div>
+<div class="col-sm-3"></div>
+</div>
+
+
+
+
+
+
+
+
+
 <script>
 function populate(s1,s2){
 	var s1 = document.getElementById(s1);
