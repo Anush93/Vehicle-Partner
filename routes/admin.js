@@ -62,26 +62,23 @@ router.get('/delete_vehicle_ad/:id', function(req, res, next) {
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
 });
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//delete all add
+router.get('/deleteVehicleAd/:id', function(req, res, next) {
+  var id = req.params.id;
+  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.redirect('/admin/all_Ads'); 
+}); 
 //confirmation of garages
 router.get('/confirm_garage/:id', function(req, res, next) {
   var id=req.params.id;
   Garage.findById(id, function (err,garage_ad) {
 
-<<<<<<< HEAD
-//delete all add
 
-/*router.get('/deleteVehicleAd/:id', function(req, res, next) {
-  var id = req.params.id;
-  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
-  res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
-});
-router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
-  var id = req.params.id;
-  AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
-  res.redirect('/admin/all_Ads'); 
-}); */
-=======
+
+
+
+
     garage_ad.set({isLive:1});
     garage_ad.save(function (err, updatedAd) {
       if (err) return handleError(err);
@@ -89,6 +86,13 @@ router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
       res.redirect('/admin/pending_garages');   
       });
     });
+  });
+
+
+  router.get('/deleteUser/:id', function(req, res, next) {
+    var id = req.params.id;
+    userData.findByIdAndRemove(id).exec();//exec is for executing previous function 
+    res.redirect('/admin'); 
   });
 
 //to view all pending garages
@@ -106,7 +110,6 @@ router.get('/delete_garage/:id', function(req, res, next) {
   res.render('pending-garages', { title: 'Pending Garages', items: doc }); 
 });
 ///////////////////////////////////////////////////////////////
->>>>>>> e08efa4c0381f2582fd360246d7ac0cd45718b8e
 
 //delete all add
 // router.get('/deleteVehicleAd/:id', function(req, res, next) {
