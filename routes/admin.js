@@ -102,7 +102,7 @@ router.get('/delete_vehicle_ad/:id', function(req, res, next) {
   res.render('pending_vehicle_ads', { title: 'Welcome admin' }); 
 });
 
-//delete all add
+//delete published add
 router.get('/deleteVehicleAd/:id', function(req, res, next) {
   var id = req.params.id;
   AdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
@@ -123,6 +123,23 @@ router.get('/deleteRentAd/:id', function(req, res, next) {
   rentAdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.redirect('/admin/adminPubRentAds'); 
 }); 
+
+//view published garages
+router.get('/publishedGarages', function(req, res, next) {
+  Garage.find({isLive:1}).
+  
+  then(function(doc){
+    res.render('admin_published_garages', { title: 'All garages',items: doc });
+  });
+});
+//delete published garages
+
+router.get('/deleteGarages/:id', function(req, res, next) {
+  var id = req.params.id;
+  Garage.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.redirect('/admin/publishedGarages'); 
+}); 
+
 //confirmation of garages
 router.get('/confirm_garage/:id/:contactno', function(req, res, next) {
   var id=req.params.id;
