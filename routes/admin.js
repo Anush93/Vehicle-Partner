@@ -117,10 +117,6 @@ router.get('/confirm_garage/:id/:contactno', function(req, res, next) {
 
   Garage.findById(id, function (err,garage_ad) {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     nexmo.message.sendSms(from, to, text, (error, response) => {
       if(error) {
         throw error;
@@ -148,15 +144,6 @@ router.get('/ddeleteVehicleAd/:id', function(req, res, next) {
   res.redirect('/admin/all_Ads'); 
 }); */
 
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
->>>>>>> master
     garage_ad.set({isLive:1});
     garage_ad.save(function (err, updatedAd) {
       if (err) return handleError(err);
@@ -187,11 +174,7 @@ router.get('/delete_garage/:id', function(req, res, next) {
   Garage.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.render('pending-garages', { title: 'Pending Garages', items: doc }); 
 });
-///////////////////////////////////////////////////////////////
-<<<<<<< HEAD
-=======
-
->>>>>>> master
+///////////////////////////////////////////////////////////////master
 
 //delete all add
 // router.get('/deleteVehicleAd/:id', function(req, res, next) {
