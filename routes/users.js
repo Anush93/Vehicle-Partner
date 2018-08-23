@@ -20,6 +20,10 @@ router.get('/user_profile', function(req, res, next) {
   res.send('logged page of user should be displayed');
 });
 
+router.get('/userProfile', function(req, res, next) {
+  res.render('user-profile', { title: 'User Profile' });
+});
+
 router.get('/garage_profile', function(req, res, next) {
   res.send('logged page of garage should be displayed');
 });

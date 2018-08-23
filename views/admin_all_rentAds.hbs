@@ -126,7 +126,7 @@
   		<div class="col-md-10 content">
   			  <div class="panel panel-default">
 						<div class="panel-heading">
-		Pending Vehicle Ads
+		Renting Vehicle Ads
 	</div>
 	
 	
@@ -154,25 +154,12 @@
                         <small><cite title="San Francisco, USA">Location: {{ this.district }}, {{ this.town}} <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>
                         {{!-- <small>{{ this.added_date }}</small> --}}
-                        <small>{{ this.mileage }} km</small>
-                        <small>Rs {{ this.price }}</small>
-
-                        <small> Owner: {{ this.Owner }}</small>
-		   
-           <small>Contact No: {{ this.Contactno }}</small> 
-		   
-            <small>Condition: {{ this.condition }}</small>
-			
-           <small>Engine Capacity: {{ this.engineCapacity }}</small> 
-		   
-           <small>Description: {{ this.description }}</small> 
-		   
-           <small>Transmissioin Type: {{ this.transmissioinType }}</small> 
-		   
-            <small>Fuel Type: {{ this.fuelType }}</small>
+                        <small>Fuel Type: {{ this.fuelType }}</small>
+                        <small>Description: {{ this.description }}</small>
+                        <small>Contact No: {{ this.Contactno }}</small>
 
                         {{!-- <button type="button" class="btn btn-secondary">More..</button> --}}
-                        <a class="btn btn-danger" href="/admin/deleteVehicleAd/{{this._id}}"  role="button">Delete</a>
+                        <a class="btn btn-danger" href="/admin/deleteRentAd/{{this._id}}"  role="button">Delete</a>
                     </div>
                 </div>
             </div>

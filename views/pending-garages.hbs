@@ -24,7 +24,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">
-				<a class="navbar-brand" href="#"   style="font-family: 'Berkshire Swash', sans-serif">VehiclePartner.lk</a>
+				<a class="navbar-brand" href="/"   style="font-family: 'Berkshire Swash', sans-serif">VehiclePartner.lk</a>
 			</a>
 		</div>
 
@@ -32,12 +32,12 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
 			
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="http://www.pingpong-labs.com" target="_blank">LogOut</a></li>
+				<li><a href="/" target="_blank">LogOut</a></li>
 				
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
-	</nav>  	<div class="container-fluid main-container">
+	</nav>  	<div class="container-fluid main-container" style="background-color:#F2F3F5">
 
 
 
@@ -66,9 +66,9 @@
 						<div id="dropdown-lvl1" class="panel-collapse collapse">
 							<div class="panel-body">
 								<ul class="nav navbar-nav">
-									<li><a href="#">All Pending Ads of Vehicle Category</a></li>
+									<li><a href="/admin/pending_vehicle_ads">All Pending Ads of Vehicle Category</a></li>
 									<li><a href="#">All Pending Ads of Spareparts Category</a></li>
-									<li><a href="#">All Pending Ads of Vehicle Rent Category</a></li>
+									<li><a href="/admin/pending_rent_ads">All Pending Ads of Vehicle Rent Category</a></li>
 
 
 								
@@ -90,9 +90,9 @@
 						<div id="dropdown-lvl2" class="panel-collapse collapse">
 							<div class="panel-body">
 								<ul class="nav navbar-nav">
-									<li><a href="#">All Ads of Vehicle Category</a></li>
+									<li><a href="/admin/all_Ads">All Ads of Vehicle Category</a></li>
 									<li><a href="#">All Ads of Spareparts Category</a></li>
-									<li><a href="#">All Ads of Vehicle Rent Category</a></li>
+									<li><a href="/admin/adminPubRentAds">All Ads of Vehicle Rent Category</a></li>
 
 
 								
@@ -103,6 +103,26 @@
 					</li>
 
 					<li><a href="/admin/"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+					<li class="panel panel-default" id="dropdown">
+						<a data-toggle="collapse" href="#dropdown-lvl3">
+							<span class="glyphicon glyphicon-wrench"></span> Garage <span class="caret"></span>
+						</a>
+
+						<!-- Dropdown level 1 -->
+						<div id="dropdown-lvl3" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul class="nav navbar-nav">
+									<li><a href="/admin/pending_garages">Pending Garages</a></li>
+									<li><a href="/admin/publishedGarages">All Garages</a></li>
+				
+
+
+								
+									
+								</ul>
+							</div>
+						</div>
+					</li>
 
 				</ul>
 			</div><!-- /.navbar-collapse -->
@@ -113,7 +133,7 @@
   		<div class="col-md-10 content">
   			  <div class="panel panel-default">
 	<div class="panel-heading">
-		Pending Vehicle Ads
+		Pending Garages
 	</div>
 <!--	<div class="panel-body">
 		
