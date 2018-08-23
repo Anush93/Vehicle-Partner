@@ -35,50 +35,53 @@ router.get('/', function( req,res, next) {
 
 
 router.post("/login",function(req,res){
-    const email = req.body.email;
-    const password = req.body.pass;
+    // const email = req.body.email;
+    // const password = req.body.pass;
 
-    console.log(password);
+//     console.log(password);
+//     if(password=='admin'){}
 
    
-    User.findByEmail(email,function(err,user){
-        if(err) throw err;
+//     User.findByEmail(email,function(err,user){
+//         if(err) throw err;
         
-        if (!user){
-             res.json({state:false,msg:"no user found"});
-        }
+//         if (!user){
+//              res.json({state:false,msg:"no user found"});
+//         }
         
         
-        User.passwordCheck(user.password,user.password,function(err,match){
+//         User.passwordCheck(user.password,user.password,function(err,match){
 
-
-        
-        if(err) throw err;
 
         
-        if (match){
-            const token = jwt.sign(user.toObject(),config.secret,{expiresIn:86400});
-             res.json({
-                 state:true,
-                 token:"Bearer "+ token,
-                 user:{
-                     id:user._id,
-                     username:user.username,
-                     email:user.email
+//         if(err) throw err;
+
+        
+//         if (match){
+//             const token = jwt.sign(user.toObject(),config.secret,{expiresIn:86400});
+//              res.json({
+//                  state:true,
+//                  token:"Bearer "+ token,
+//                  user:{
+//                      id:user._id,
+//                      username:user.username,
+//                      email:user.email
 
 
-                 }
+//                  }
 
 
-             }); 
-             res.render('user-profile', { title: 'Register' });
+//              }); 
+//              res.render('user-profile', { title: 'Register' });
             
-        }
-        else{
-            res.json({state:false,msg:"password does not match"});
-        }
-    });
-});
+//         }
+//         else{
+//             res.json({state:false,msg:"password does not match"});
+//         }
+//     });
+// });
+
+res.render('user-profile', { title: 'User Profile' });
 });
 
 router.post('/profile', passport.authenticate('jwt', { session: false }),
