@@ -13,7 +13,7 @@ var adDataSchema = new Schema({
   Owner:{type:String,required:true},
   Contactno:{type:Number,required:true},
   SparePartCategory:{type:String,required:true},//can't be empty
-  SparePartSubCategory:{type:String,required:true},
+  //SparePartSubCategory:{type:String,required:true},
   VehicleType:{type:String,required:true},
   SparePartName:{type:String,required:true},
   condition:{type:String,required:true},

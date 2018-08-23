@@ -61,39 +61,21 @@ router.post('/sp-data-insert',upload.any(),function(req, res, next) {
 
   var item = {
     //title: req.body.title,
-    Owner:req.body.owner,
-    Contactno:req.body.contactNo,
-    SparePartCategory:req.body.sparepartcategory,//can't be empty
-    VehicleType:req.body.vehicletype,
-    SparePartName:req.body.sparepartname,
-    condition:req.body.condition,
-    transmissioinType:req.body.transmissioinType,
-    VehicleBrand:req.body.VehicleBrand,
-    district:req.body.district,
-    town:req.body.town,
-    VehicleBrand:req.body.vehiclebrand,
-    description:req.body.description,
-    //image:{type:String,required:true},
-    image1Path:req.files[0].filename,
-    image2Path:req.files[1].filename,
-    image3Path:req.files[2].filename,
-    price:req.body.price//////////////////
-  //   Owner:{type:String,required:true},
-  // Contactno:{type:Number,required:true},
-  // SparePartCategory:{type:String,required:true},//can't be empty
-  // SparePartSubCategory:{type:String,required:true},
-  //  VehicleType:{type:String,required:true},
-  // SparePartName:{type:String,required:true},
-  // condition:{type:String,required:true},
-  // VehicleBrand:{type:String,required:true},
-  // district:{type:String,required:true},
-  // town:{type:String,required:true},
-  // description:{type:String,required:true},
-  // ////////////////////////image
-	// image1Path:{type:String,required:true},
-	// image2Path:{type:String,required:true},
-  // image3Path:{type:String,required:true},
-  // price:{type:Number,required:true},
+    Owner:req.body.owner,//
+    Contactno:req.body.contactno,//
+    SparePartCategory:req.body.sparepartcategory,//
+    VehicleType:req.body.vehicletype,//
+    SparePartName:req.body.sparepartname,//
+    condition:req.body.condition,//
+    district:req.body.district,//
+    town:req.body.town,//
+    VehicleBrand:req.body.vehiclebrand,//
+    description:req.body.description,//
+    image1Path:req.files[0].filename,//
+    image2Path:req.files[1].filename,//
+    image3Path:req.files[2].filename,//
+    price:req.body.price//
+  
   };//item obj
 
   var data = new sparePart(item);//data is our model of collection to which we passed item objct
@@ -113,16 +95,5 @@ router.get('/search', function(req, res, next) {
   });
   //res.send(district);
 });
-
-// router.get('/search/:district/:town', function(req, res, next) {
-//   var town=req.params.town;
-//   var district=req.params.district;
-//   //console.log(district);
-//  // console.log(town);
-//   AdData.find({district:district,town:town}).
-//   then(function(doc){
-//     res.render('vehicle-ads-all', { title: 'All vehicle adds',items: doc });
-//   });
-// });
 
 module.exports = router;

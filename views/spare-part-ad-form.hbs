@@ -44,9 +44,9 @@
 
   <form name="form" method="POST" action="/spare_part/sp-data-insert" enctype="multipart/form-data" onSubmit="return validate();">
     <div class="form-group" >
-    <label for="exampleSelect1">Vehicle Type</label>
-    <select class="form-control" id="VehicleCategory" name="VehicleCategory" required>
-      <option value="">Category</option>
+    <label for="exampleSelect1">Vehicle Type of Spare Part</label>
+    <select class="form-control" id="vehicletype" name="vehicletype" required>
+      <option value="">Type</option>
       <option value="car">Cars</option>
       <option value="Heavy machine & tractors">Heavy Machinery & Tractors</option>
       <option value="Motorbikes & Scooters">Motorbikes & Scooters</option>
@@ -58,8 +58,8 @@
     </div>
 
     <div class="form-group">
-    <label for="exampleSelect1">Vehicle Brand</label>
-    <select class="form-control" id="VehicleBrand" name="VehicleBrand" required>
+    <label for="exampleSelect1">Vehicle Brand of Spare Part</label>
+    <select class="form-control" id="vehiclebrand" name="vehiclebrand" required>
       <option value="">Brand  </option>
       <option value="aston-martin">Aston Martin</option>
       <option value="audi">Audi</option>
@@ -133,36 +133,15 @@
     </select>
     </div>
 
-  <div class="form-group">
-    <label for="example-text-input" class="col-2 col-form-label" >Vehicle Model</label>
+  {{!-- <div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Model of Spare Part</label>
       <div class="col-10">
         <input class="form-control" type="text" id="VehicleModel" name="VehicleModel" placeholder="Enter Vehicle model" required>
       </div>
-  </div>
+  </div> --}}
 
   <div class="form-group">
-  <label for="exampleSelect1">Fuel Type</label><br>
-    <label class="radio-inline">
-      <input type="radio" name="fuelType" value="diesel" required>Diesel 
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="fuelType" value="petrol" required>Petrol 
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="fuelType" value="cng" required>CNG
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="fuelType" value="otherType" required>Other Type
-    </label>
-</div>
-    <div class="form-group">
-        <label for="example-number-input" class="col-2 col-form-label">Year</label>
-        <div class="col-10">
-        <input class="form-control" type="number" id="year" name="year" placeholder="Enter Year of the Vehcle" onchange="current_year()" required>
-        </div>
-    </div>
-  <div class="form-group">
-  <label for="exampleSelect1">Condition</label><br>
+  <label for="exampleSelect1">Condition of Spare Part</label><br>
     <label class="radio-inline">
       <input type="radio" name="condition" value="used" required>Used 
     </label>
@@ -173,29 +152,32 @@
       <input type="radio" name="condition" value="new" required>New
     </label>
 </div>
-<div class="form-group">
-    <label for="example-number-input" class="col-2 col-form-label">Mileage</label>
-    <div class="col-10">
-    <input class="form-control" type="number" id="mileage" name="mileage" placeholder="Enter Mileage of Your Vehcle" required>
-    </div>
-</div>
+
 
 <div class="form-group">
-    <label for="example-number-input" class="col-2 col-form-label">Engine Capacity</label>
-    <div class="col-10">
-    <input class="form-control" type="number" id="engineCapacity" name="engineCapacity" placeholder="Enter Engine Capacity of Your Vehcle in cc" required>
-    </div>
-</div>
-
-<div class="form-group">
-    <label for="exampleSelect1">Transmissioin Type</label>
-    <select class="form-control" id="transmissioinType" name="transmissioinType" required>
-      <option value="">Transmission  </option>
-      <option value="manual">Manual</option>
-      <option value="automatic">Automatic</option>
-      <option value="tiptronic">Tiptronic</option>
-      <option value="other">Other transmission</option>
+    <label for="exampleSelect1">Spare Part Category</label>
+    <select class="form-control" id="slct3" name="sparepartcategory"  required>
+      <option value="">Select Category  </option>
+      <option value="Engine ">Engine </option>
+      <option value="EFI">EFI </option>
+      <option value="Air intake and exhaust">Air intake and exhaust</option>
+      <option value="Ignition ">Ignition </option>
+      <option value="Suspension ">Suspension </option>
+      <option value="Brake ">Brake </option>
+      <option value="Transmission ">Transmission </option>
+      <option value="Steering system ">Steering system </option>
+      <option value="Cooling system ">Cooling system </option>
+      <option value="Starting  ">Starting  </option>
+      <option value="Interior body parts ">Interior body parts </option>
+      <option value="Exterior body parts ">Exterior body parts </option>
     </select>
+  </div>
+
+<div class="form-group">
+    <label for="example-text-input" class="col-2 col-form-label" >Spare Part Name</label>
+      <div class="col-10">
+        <input class="form-control" type="text" id="sparepartname" name="sparepartname" placeholder="Enter Spare Part Name" required>
+      </div>
   </div>
 
   <div class="form-group">
@@ -239,7 +221,7 @@
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
-    <textarea class="form-control" id="description" name="description" rows="6" required></textarea>
+    <textarea class="form-control" id="description" placeholder="Enter your details of spare part in an attractive way to customer" name="description" rows="6" required></textarea>
   </div>
   
 
@@ -295,7 +277,7 @@
     <label for="example-text-input" class="col-2 col-form-label" >Contact No</label>
       <div class="col-10">
         <input class="form-control" maxlength="10" minlength="10" type="number" 
-        onchange="phoneNumber()"  id="contactNo" name="contactNo" placeholder="Enter Contact No" required>
+        onchange="phoneNumber()"  id="contactno" name="contactno" placeholder="Enter Contact No" required>
       </div>
   </div>
   

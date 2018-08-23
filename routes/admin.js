@@ -14,6 +14,7 @@ var userData =require('../models/user');
 var Garage=require('../models/garage.model');
 const Nexmo = require('nexmo');
 var rentAdData=require('../models/rent_ad.model');
+var sparePart=require('../models/spare_part.model');
 
 const nexmo = new Nexmo({
   apiKey: '7a13ba49',
@@ -277,6 +278,51 @@ router.get('/delete_rent_ad/:id', function(req, res, next) {
   var id = req.params.id;
   rentAdData.findByIdAndRemove(id).exec();//exec is for executing previous function 
   res.render('pending-rent-ads', { title: 'Pending Rent Ads', items: doc }); 
+});
+///////////////////////////////////////////// spare parts ads
+
+router.get('/confirm_sp_ad/:id/:contactno', function(req, res, next) {
+  var id=req.params.id;
+  var from = 'VehiclePartner.lk';
+  var to = '+94'+req.params.contactno;
+  var text = 'Now your Advertisement is live on VehiclePartner.lk';
+  
+  sparePart.findById(id, function (err,sp_ad) {
+
+    nexmo.message.sendSms(from, to, text, (error, response) => {
+      if(error) {
+        throw error;
+      } else if(response.messages[0].status != '0') {
+        console.error(response);
+        throw 'Nexmo returned back a non-zero status';
+      } else {
+        console.log(response);
+        //res.redirect('/admin/pending_vehicle_ads');
+      }
+    });
+
+    sp_ad.set({isLive:1});
+    sp_ad.save(function (err, updatedAd) {
+      if (err) return handleError(err);
+      console.log(updatedAd);
+      res.redirect('/admin/pending_sp_ads');   
+      });
+    });
+  });
+
+//to view all pending spare part ads
+router.get('/pending_sp_ads', function(req, res, next) {
+  sparePart.find({isLive:0}).
+  then(function(doc){
+    res.render('pending-spare-parts-ads', { title: 'Pending Spare Parts Ads', items: doc });
+  });
+});
+
+//delete spare part ads from admin view
+router.get('/delete_sp_ad/:id', function(req, res, next) {
+  var id = req.params.id;
+  sparePart.findByIdAndRemove(id).exec();//exec is for executing previous function 
+  res.render('pending-spare-parts-ads', { title: 'Pending Spare Parts Ads', items: doc }); 
 });
 
 
