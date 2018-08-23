@@ -80,7 +80,7 @@ router.post('/sp-data-insert',upload.any(),function(req, res, next) {
 
   var data = new sparePart(item);//data is our model of collection to which we passed item objct
   data.save();//jst save dat objct man;
-  res.redirect('/');
+  res.redirect('/users/userProfile');
 }
 });
 
